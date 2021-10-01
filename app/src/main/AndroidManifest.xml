@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MGEProjekt">
         <activity
+            android:name=".SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DivisionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MultiplicationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SubtractionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AdditionActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
