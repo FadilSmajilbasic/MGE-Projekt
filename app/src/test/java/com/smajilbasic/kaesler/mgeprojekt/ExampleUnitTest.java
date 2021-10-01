@@ -1,4 +1,4 @@
-package com.example.mgeprojekt;
+package com.smajilbasic.kaesler.mgeprojekt;
 
 import org.junit.Test;
 
