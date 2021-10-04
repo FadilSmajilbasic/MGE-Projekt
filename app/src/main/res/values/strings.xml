@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">MGE Projekt</string>
     <string name="title_de">Rechner</string>
+    <string name="first_number_de">Erste Nummer</string>
+    <string name="second_number_de">Zweite Nummer</string>
+    <string name="calculate_button_text_de">Kalkulieren</string>
+    <string name="result_hint_de">Resultat</string>
+    <string name="addition_activity_title_de">Addition</string>
+    <string name="first_number_error_message_de">Erste Nummer kann nicht Leer sein</string>
+    <string name="second_number_error_message_de">Zweite Nummer kann nicht Leer sein</string>
 </resources>
