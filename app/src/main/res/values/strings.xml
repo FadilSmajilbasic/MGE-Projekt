@@ -8,4 +8,5 @@
     <string name="addition_activity_title_de">Addition</string>
     <string name="first_number_error_message_de">Erste Nummer kann nicht Leer sein</string>
     <string name="second_number_error_message_de">Zweite Nummer kann nicht Leer sein</string>
+    <string name="subtraction_activity_title_de">Subtraktion</string>
 </resources>
