@@ -51,6 +51,13 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center">
+
+                <Spinner
+                    android:id="@+id/language_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </Spinner>
             </LinearLayout>
 
 
