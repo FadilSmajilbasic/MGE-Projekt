@@ -11,4 +11,6 @@
     <string name="subtraction_activity_title_de">Subtraktion</string>
     <string name="division_activity_title_de">Division</string>
     <string name="multiplication_activity_title_de">Multiplikation</string>
+    <string name="settings_title_de">Einstellungen</string>
+    <string name="dark_mode_switch_text">Dark mode on</string>
 </resources>
