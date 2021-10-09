@@ -9,4 +9,6 @@
     <string name="first_number_error_message_de">Erste Nummer kann nicht Leer sein</string>
     <string name="second_number_error_message_de">Zweite Nummer kann nicht Leer sein</string>
     <string name="subtraction_activity_title_de">Subtraktion</string>
+    <string name="division_activity_title_de">Division</string>
+    <string name="multiplication_activity_title_de">Multiplikation</string>
 </resources>

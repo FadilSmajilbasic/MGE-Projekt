@@ -40,7 +40,7 @@
                 android:id="@+id/firstNumber"
                 android:layout_weight="1"
                 android:hint="@string/first_number_de"
-                android:inputType="numberDecimal"
+                android:inputType="numberSigned|numberDecimal"
                 android:tooltipText="@string/first_number_de" />
 
             <EditText
@@ -48,8 +48,8 @@
                 android:layout_weight="1"
 
                 android:hint="@string/second_number_de"
-                android:inputType="numberDecimal"
-                android:tooltipText="@string/first_number_de" />
+                android:inputType="numberSigned|numberDecimal"
+                android:tooltipText="@string/second_number_de" />
         </TableRow>
 
         <TableRow
