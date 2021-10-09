@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Progetto MGE</string>
+    <string name="title_de">Calcolatrice</string>
+    <string name="first_number_de">Primo numero</string>
+    <string name="second_number_de">Secondo numero</string>
+    <string name="calculate_button_text_de">Calcola</string>
+    <string name="result_hint_de">Risultato</string>
+    <string name="addition_activity_title_de">Addizone</string>
+    <string name="first_number_error_message_de">Il Primo numero non può essere vuoto</string>
+    <string name="second_number_error_message_de">Il Secondo numero non può essere vuoto</string>
+    <string name="subtraction_activity_title_de">Sottrazione</string>
+    <string name="division_activity_title_de">Divisione</string>
+    <string name="multiplication_activity_title_de">Multiplicazione</string>
+    <string name="settings_title_de">Impostazioni</string>
+    <string name="dark_mode_switch_text">Modalità notturna</string>
+</resources>
