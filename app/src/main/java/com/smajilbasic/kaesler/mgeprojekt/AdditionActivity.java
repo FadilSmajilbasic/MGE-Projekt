@@ -1,13 +1,21 @@
 package com.smajilbasic.kaesler.mgeprojekt;
 
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.updateLocale;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 public class AdditionActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,6 +27,13 @@ public class AdditionActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_addition);
         findViewById(R.id.calculateButton).setOnClickListener(this);
         resultBox = findViewById(R.id.result);
+    }
+
+    @Override
+    public void applyOverrideConfiguration(Configuration overrideConfiguration) {
+        String lang = getPreferences(MODE_PRIVATE).getString(Helper.LOCALE_VALUE_KEY,"de");
+
+        super.applyOverrideConfiguration(updateLocale(this,lang).getResources().getConfiguration());
     }
 
 

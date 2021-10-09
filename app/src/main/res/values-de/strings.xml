@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MGE Projekt</string>
     <string name="title_de">Rechner</string>
@@ -13,9 +14,4 @@
     <string name="multiplication_activity_title_de">Multiplikation</string>
     <string name="settings_title_de">Einstellungen</string>
     <string name="dark_mode_switch_text">Dark mode</string>
-    <string-array name="languages_array">
-        <item>English</item>
-        <item>German</item>
-        <item>Italian</item>
-    </string-array>
 </resources>
