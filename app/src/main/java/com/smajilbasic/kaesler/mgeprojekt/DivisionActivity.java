@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class DivisionActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView resultBox;
@@ -36,7 +39,9 @@ public class DivisionActivity extends AppCompatActivity implements View.OnClickL
                     StringBuilder builder = new StringBuilder();
                     Double firstNumber = Double.valueOf(firstInput);
                     Double secondNumber = Double.valueOf(secondInput);
-                    builder.append(firstInput).append(" / ").append(secondInput).append(" = ").append(firstNumber / secondNumber).append("\n");
+                    DecimalFormat df = new DecimalFormat("#.###");
+                    df.setRoundingMode(RoundingMode.HALF_UP);
+                    builder.append(firstInput).append(" / ").append(secondInput).append(" = ").append(df.format(firstNumber / secondNumber)).append("\n");
                     resultBox.append(builder.toString());
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();
