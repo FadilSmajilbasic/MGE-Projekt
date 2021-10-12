@@ -1,7 +1,5 @@
 package com.smajilbasic.kaesler.mgeprojekt;
 
-import static com.smajilbasic.kaesler.mgeprojekt.Helper.updateLocale;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -13,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class DivisionActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView resultBox;
@@ -23,12 +24,6 @@ public class DivisionActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_division);
         findViewById(R.id.calculateButton).setOnClickListener(this);
         resultBox = findViewById(R.id.result);
-    }
-    @Override
-    public void applyOverrideConfiguration(Configuration overrideConfiguration) {
-        String lang = getPreferences(MODE_PRIVATE).getString(Helper.LOCALE_VALUE_KEY,"de");
-
-        super.applyOverrideConfiguration(updateLocale(this,lang).getResources().getConfiguration());
     }
 
 
@@ -44,7 +39,9 @@ public class DivisionActivity extends AppCompatActivity implements View.OnClickL
                     StringBuilder builder = new StringBuilder();
                     Double firstNumber = Double.valueOf(firstInput);
                     Double secondNumber = Double.valueOf(secondInput);
-                    builder.append(firstInput).append(" / ").append(secondInput).append(" = ").append(firstNumber / secondNumber).append("\n");
+                    DecimalFormat df = new DecimalFormat("#.###");
+                    df.setRoundingMode(RoundingMode.HALF_UP);
+                    builder.append(firstInput).append(" / ").append(secondInput).append(" = ").append(df.format(firstNumber / secondNumber)).append("\n");
                     resultBox.append(builder.toString());
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();
