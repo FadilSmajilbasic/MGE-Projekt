@@ -2,6 +2,7 @@ package com.smajilbasic.kaesler.mgeprojekt;
 
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.DARK_MODE_KEY;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.LOCALE_VALUE_KEY;
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.updateLocale;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,13 +32,14 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        sharedPref = getPreferences(MODE_PRIVATE);
+        sharedPref = getSharedPreferences(USER_PREFERENCES, MODE_PRIVATE);
         editor = sharedPref.edit();
+
         boolean darkModeSetting = sharedPref.getBoolean(DARK_MODE_KEY, false);
 
         SwitchCompat themeSwitch = findViewById(R.id.theme_switch);
-        themeSwitch.setOnCheckedChangeListener(this);
         themeSwitch.setChecked(darkModeSetting);
+        themeSwitch.setOnCheckedChangeListener(this);
 
         initSpinner();
     }
@@ -72,8 +75,12 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
         if (isChecked) {
+            editor.putBoolean(DARK_MODE_KEY, true);
+            editor.apply();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
+            editor.putBoolean(DARK_MODE_KEY, false);
+            editor.apply();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
@@ -81,9 +88,8 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String lang;
-        if(view !=null) {
-            String selected = view.toString();
-
+        if (view != null) {
+            String selected = ((Spinner) findViewById(R.id.language_spinner)).getSelectedItem().toString();
             switch (selected) {
                 default:
                 case "English":
@@ -96,8 +102,8 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
                     lang = "de";
                     break;
             }
-
             editor.putString(LOCALE_VALUE_KEY, lang);
+            editor.apply();
         }
     }
 

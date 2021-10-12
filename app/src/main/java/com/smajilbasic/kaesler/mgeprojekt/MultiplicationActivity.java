@@ -4,10 +4,8 @@ import static com.smajilbasic.kaesler.mgeprojekt.Helper.updateLocale;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
