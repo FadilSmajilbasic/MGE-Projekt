@@ -23,8 +23,8 @@
             android:layout_weight="1"
             android:max="255"
             android:min="0"
-            android:outlineAmbientShadowColor="@color/red"
-            android:outlineSpotShadowColor="@color/red"
+            android:theme="@style/RedSeekBar"
+            android:thumbTint="@color/red"
             android:tooltipText="Red color" />
     </TableRow>
 
@@ -48,8 +48,8 @@
             android:layout_weight="1"
             android:max="255"
             android:min="0"
-            android:outlineAmbientShadowColor="@color/green"
-            android:outlineSpotShadowColor="@color/green"
+            android:theme="@style/GreenSeekBar"
+            android:thumbTint="@color/green"
             android:tooltipText="Green color" />
     </TableRow>
 
@@ -72,8 +72,8 @@
             android:layout_weight="1"
             android:max="255"
             android:min="0"
-            android:outlineAmbientShadowColor="@color/blue"
-            android:outlineSpotShadowColor="@color/blue"
+            android:theme="@style/BlueSeekBar"
+            android:thumbTint="@color/blue"
             android:tooltipText="Blue color" />
     </TableRow>
 
