@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_root_element"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow android:layout_width="match_parent">
+
+        <TextView
+            android:paddingStart="@dimen/color_picker_dialog_padding"
+            android:text="@string/color_picker_dialog_seek_bar_red"
+            android:textSize="@dimen/color_picker_dialog_colors_text_size" />
+
+
+    </TableRow>
+
+    <TableRow>
+
+        <SeekBar
+            android:id="@+id/red_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:max="255"
+            android:min="0"
+            android:outlineAmbientShadowColor="@color/red"
+            android:outlineSpotShadowColor="@color/red"
+            android:tooltipText="Red color" />
+    </TableRow>
+
+    <TableRow android:layout_width="match_parent">
+
+        <TextView
+            android:paddingStart="@dimen/color_picker_dialog_padding"
+            android:text="@string/color_picker_dialog_seek_bar_green"
+            android:textSize="@dimen/color_picker_dialog_colors_text_size" />
+
+
+    </TableRow>
+
+    <TableRow>
+
+        <SeekBar
+
+            android:id="@+id/green_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:max="255"
+            android:min="0"
+            android:outlineAmbientShadowColor="@color/green"
+            android:outlineSpotShadowColor="@color/green"
+            android:tooltipText="Green color" />
+    </TableRow>
+
+    <TableRow android:layout_width="match_parent">
+
+        <TextView
+            android:paddingStart="@dimen/color_picker_dialog_padding"
+            android:text="@string/color_picker_dialog_seek_bar_blue"
+            android:textSize="@dimen/color_picker_dialog_colors_text_size" />
+
+
+    </TableRow>
+
+    <TableRow>
+
+        <SeekBar
+            android:id="@+id/blue_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:max="255"
+            android:min="0"
+            android:outlineAmbientShadowColor="@color/blue"
+            android:outlineSpotShadowColor="@color/blue"
+            android:tooltipText="Blue color" />
+    </TableRow>
+
+</TableLayout>
