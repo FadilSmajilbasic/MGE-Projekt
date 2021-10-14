@@ -14,4 +14,7 @@
     <string name="multiplication_activity_title_de">Multiplicazione</string>
     <string name="settings_title_de">Impostazioni</string>
     <string name="dark_mode_switch_text">Modalità notturna</string>
+    <string name="color_picker_button_text_de">Selezionare il colore</string>
+    <string name="color_pciker_dialog_cancel_de">Cancella</string>
+    <string name="color_picker_dialog_save_de">Salva</string>
 </resources>

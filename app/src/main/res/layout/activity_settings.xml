@@ -51,13 +51,14 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/color_picker_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/color_picker_button_text_de">
 
-                <Spinner
-                    android:id="@+id/language_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                </androidx.appcompat.widget.AppCompatButton>
 
-                </Spinner>
             </LinearLayout>
 
 

@@ -13,6 +13,13 @@
     <string name="multiplication_activity_title_de">Multiplikation</string>
     <string name="settings_title_de">Einstellungen</string>
     <string name="dark_mode_switch_text">Dark mode</string>
+    <string name="color_picker_button_text_de">Farbe wählen</string>
+    <string name="color_pciker_dialog_cancel_de">Abbrechen</string>
+    <string name="color_picker_dialog_save_de">Speichern</string>
+    <string name="color_picker_dialog_title_de">UI Farbe wählen</string>
+    <string name="color_picker_dialog_seek_bar_red">Rot</string>
+    <string name="color_picker_dialog_seek_bar_green">Grün</string>
+    <string name="color_picker_dialog_seek_bar_blue">Blau</string>
     <string-array name="languages_array">
         <item>English</item>
         <item>German</item>

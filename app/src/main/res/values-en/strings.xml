@@ -14,4 +14,7 @@
     <string name="multiplication_activity_title_de">Multiplication</string>
     <string name="settings_title_de">Settings</string>
     <string name="dark_mode_switch_text">Dark mode</string>
+    <string name="color_picker_button_text_de">Choose color</string>
+    <string name="color_pciker_dialog_cancel_de">Cancel</string>
+    <string name="color_picker_dialog_save_de">Save</string>
 </resources>

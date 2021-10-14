@@ -1,30 +1,42 @@
 package com.smajilbasic.kaesler.mgeprojekt;
 
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.COLOR_KEY;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.DARK_MODE_KEY;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 
 import com.google.android.material.textview.MaterialTextView;
 
-public class SettingsActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+/**
+ * Color change source: https://stackoverflow.com/a/48517223
+ */
+public class SettingsActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, ColorPickerDialog.ColorPickerDialogListener {
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
-
+    Dialog colorPickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +50,8 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         SwitchCompat themeSwitch = findViewById(R.id.theme_switch);
         themeSwitch.setChecked(darkModeSetting);
         themeSwitch.setOnCheckedChangeListener(this);
+
+        findViewById(R.id.color_picker_button).setOnClickListener(this);
 
     }
 
@@ -53,5 +67,40 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
             editor.apply();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.color_picker_button) {
+            ColorPickerDialog colorPickerDialog = new ColorPickerDialog(sharedPref.getInt(COLOR_KEY, 0));
+            colorPickerDialog.show(getSupportFragmentManager(), "ColorPickerFragment");
+
+        }
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog, int colors) {
+
+        editor.putInt(Helper.COLOR_KEY, colors);
+        editor.apply();
+
+        int rgb = (Color.red(colors) + Color.green(colors) + Color.blue(colors)) / 3;
+
+        if (rgb > 210) { // Checking if title text color will be black
+            this.setTheme(R.style.AppTheme);
+        }
+
+        this.setTheme(this.getResources()
+                .getIdentifier("T_" + String.format("%x", Color.red(colors))
+                + String.format("%x", Color.green(colors))
+                + String.format("%x", Color.blue(colors)),
+                "style", this.getPackageName()));
+
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
     }
 }
