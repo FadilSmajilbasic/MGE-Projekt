@@ -10,8 +10,6 @@
             android:paddingStart="@dimen/color_picker_dialog_padding"
             android:text="@string/color_picker_dialog_seek_bar_red"
             android:textSize="@dimen/color_picker_dialog_colors_text_size" />
-
-
     </TableRow>
 
     <TableRow>
@@ -21,8 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:max="255"
+            android:max="17"
             android:min="0"
+            
             android:theme="@style/RedSeekBar"
             android:thumbTint="@color/red"
             android:tooltipText="Red color" />
@@ -46,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:max="255"
+            android:max="17"
             android:min="0"
             android:theme="@style/GreenSeekBar"
             android:thumbTint="@color/green"
@@ -70,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:max="255"
+            android:max="17"
             android:min="0"
             android:theme="@style/BlueSeekBar"
             android:thumbTint="@color/blue"

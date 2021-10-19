@@ -2,6 +2,7 @@ package com.smajilbasic.kaesler.mgeprojekt;
 
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.COLOR_KEY;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.DARK_MODE_KEY;
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.THEME_KEY;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
 
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -86,17 +88,17 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
 
         int rgb = (Color.red(colors) + Color.green(colors) + Color.blue(colors)) / 3;
 
-        if (rgb > 210) { // Checking if title text color will be black
-            this.setTheme(R.style.AppTheme);
-        }
+//        if (rgb > 210) { // Checking if title text color will be black
+//            this.setTheme(R.style.AppTheme);
+//        }
 
-        this.setTheme(this.getResources()
-                .getIdentifier("T_" + String.format("%x", Color.red(colors))
+        String themeName = "T_" + String.format("%x", Color.red(colors))
                 + String.format("%x", Color.green(colors))
-                + String.format("%x", Color.blue(colors)),
-                "style", this.getPackageName()));
+                + String.format("%x", Color.blue(colors));
 
-
+        Log.d("MGE.APP","Themen resource " + this.getResources().getIdentifier(themeName,"style", null));
+        editor.putString(THEME_KEY,themeName);
+        this.recreate();
     }
 
     @Override
