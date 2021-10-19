@@ -10,6 +10,7 @@ package com.smajilbasic.kaesler.mgeprojekt;
  */
 
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.DARK_MODE_KEY;
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.THEME_KEY;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -31,6 +34,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPref = getSharedPreferences(USER_PREFERENCES,MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        this.setTheme(this.getResources().getIdentifier(sharedPref.getString(THEME_KEY,"Theme.MGEProjekt"),"style", null));
+
         setContentView(R.layout.activity_main);
         findViewById(R.id.plusButton).setOnClickListener(this);
         findViewById(R.id.minusButton).setOnClickListener(this);
@@ -38,8 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.multiplyButton).setOnClickListener(this);
         findViewById(R.id.settingsButton).setOnClickListener(this);
 
-        SharedPreferences sharedPref = getSharedPreferences(USER_PREFERENCES,MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
+
 
         if (sharedPref.contains(Helper.DARK_MODE_KEY)) {
             if (sharedPref.getBoolean(DARK_MODE_KEY, false)) {
@@ -54,6 +61,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editor.apply();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+
+        PackageInfo packageInfo;
+        try
+        {
+            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
+            int themeResId = packageInfo.applicationInfo.theme;
+            Log.d("MGE.APP","res int: " + getResources().getResourceEntryName(themeResId));
+
+        }
+        catch (PackageManager.NameNotFoundException e)
+        {
+            Log.d("MGE.APP","not found");
+        }
+
 
     }
 

@@ -12,5 +12,6 @@ public class Helper {
     public static final String COLOR_KEY = "color_set_key";
     protected static final String USER_PREFERENCES = "user_preferences_name";
     protected static final String DARK_MODE_KEY = "dark_mode_setting";
+    protected static final String THEME_KEY = "theme_to_set";
 
 }

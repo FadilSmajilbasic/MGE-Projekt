@@ -49,13 +49,13 @@ public class ColorPickerDialog extends DialogFragment {
         SeekBar greenSeekBar = (SeekBar) layout.findViewById(R.id.green_seek_bar);
         SeekBar blueSeekBar = (SeekBar) layout.findViewById(R.id.blue_seek_bar);
 
-        redSeekBar.incrementProgressBy(15);
-        greenSeekBar.incrementProgressBy(15);
-        blueSeekBar.incrementProgressBy(15);
+//        redSeekBar.incrementProgressBy(15);
+//        greenSeekBar.incrementProgressBy(15);
+//        blueSeekBar.incrementProgressBy(15);
 
-        redSeekBar.setProgress(Color.red(color));
-        greenSeekBar.setProgress(Color.green(color));
-        blueSeekBar.setProgress(Color.blue(color));
+        redSeekBar.setProgress(Color.red(color)/15);
+        greenSeekBar.setProgress(Color.green(color)/15);
+        blueSeekBar.setProgress(Color.blue(color)/15);
 
         builder.setMessage(R.string.color_picker_dialog_title_de)
                 .setPositiveButton(R.string.color_picker_dialog_save_de, new DialogInterface.OnClickListener() {
@@ -63,13 +63,14 @@ public class ColorPickerDialog extends DialogFragment {
 
 
                         int color = Color.rgb(
-                                redSeekBar.getProgress(),
-                                greenSeekBar.getProgress(),
-                                blueSeekBar.getProgress());
+                                (redSeekBar.getProgress() * 15),
+                                (greenSeekBar.getProgress() * 15),
+                                (blueSeekBar.getProgress()) * 15);
 
 
                         Log.d("MGE.APP", "colors: #" + String.format("%x", color));
                         Log.d("MGE.APP", "color: red" + redSeekBar.getProgress() + " green:" + greenSeekBar.getProgress() + " blue: " + blueSeekBar.getProgress());
+                        Log.d("MGE.APP", "color: red" + redSeekBar.getProgress() * 15 + " green:" + greenSeekBar.getProgress() * 15 + " blue: " + blueSeekBar.getProgress() * 15);
                         listener.onDialogPositiveClick(ColorPickerDialog.this, color);
                     }
                 })
