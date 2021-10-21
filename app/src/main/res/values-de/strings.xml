@@ -21,4 +21,6 @@
     <string name="color_picker_dialog_seek_bar_green">Grün</string>
     <string name="color_picker_dialog_seek_bar_blue">Blau</string>
     <string name="color_pciker_dialog_cancel_de">Abbrechen</string>
+    <string name="color_picker_dialog_notice_text">Um die Farbe der Applikation erfolgleich zu ändern muss die Applikation neu gestartet werden</string>
+    <string name="application_restart_toast">Die Applikation wird neu gestartet</string>
 </resources>
