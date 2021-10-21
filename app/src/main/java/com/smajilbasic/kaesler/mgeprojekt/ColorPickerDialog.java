@@ -21,16 +21,21 @@ public class ColorPickerDialog extends DialogFragment {
 
 
     ColorPickerDialogListener listener;
-    int color;
 
     public interface ColorPickerDialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog, int color);
+        void onDialogPositiveClick(DialogFragment dialog, int color);
 
-        public void onDialogNegativeClick(DialogFragment dialog);
     }
 
-    public ColorPickerDialog(int color) {
-        this.color = color;
+    public ColorPickerDialog() {
+    }
+
+    public static ColorPickerDialog newInstance(int color) {
+        Bundle args = new Bundle();
+        args.putInt("color", color);
+        ColorPickerDialog colorPickerDialog = new ColorPickerDialog();
+        colorPickerDialog.setArguments(args);
+        return colorPickerDialog;
     }
 
     @NonNull
@@ -42,44 +47,31 @@ public class ColorPickerDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         LayoutInflater inflater = requireActivity().getLayoutInflater();
-        View layout = inflater.inflate(R.layout.color_picker_dialog, (ViewGroup) activity.findViewById(R.id.dialog_root_element));
+        View layout = inflater.inflate(R.layout.color_picker_dialog, activity.findViewById(R.id.dialog_root_element));
         builder.setView(layout);
 
-        SeekBar redSeekBar = (SeekBar) layout.findViewById(R.id.red_seek_bar);
-        SeekBar greenSeekBar = (SeekBar) layout.findViewById(R.id.green_seek_bar);
-        SeekBar blueSeekBar = (SeekBar) layout.findViewById(R.id.blue_seek_bar);
-
-//        redSeekBar.incrementProgressBy(15);
-//        greenSeekBar.incrementProgressBy(15);
-//        blueSeekBar.incrementProgressBy(15);
-
-        redSeekBar.setProgress(Color.red(color)/15);
-        greenSeekBar.setProgress(Color.green(color)/15);
-        blueSeekBar.setProgress(Color.blue(color)/15);
+        SeekBar redSeekBar = layout.findViewById(R.id.red_seek_bar);
+        SeekBar greenSeekBar = layout.findViewById(R.id.green_seek_bar);
+        SeekBar blueSeekBar = layout.findViewById(R.id.blue_seek_bar);
+        int color = 0;
+        if (getArguments() != null) {
+            color = getArguments().getInt("color");
+        }
+        redSeekBar.setProgress(Color.red(color) / 15);
+        greenSeekBar.setProgress(Color.green(color) / 15);
+        blueSeekBar.setProgress(Color.blue(color) / 15);
 
         builder.setMessage(R.string.color_picker_dialog_title_de)
-                .setPositiveButton(R.string.color_picker_dialog_save_de, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+                .setPositiveButton(R.string.color_picker_dialog_save_de, (dialog, id) -> {
 
+                    int colorRead = Color.rgb(
+                            (redSeekBar.getProgress() * 15),
+                            (greenSeekBar.getProgress() * 15),
+                            (blueSeekBar.getProgress()) * 15);
+                listener.onDialogPositiveClick(ColorPickerDialog.this, colorRead);
 
-                        int color = Color.rgb(
-                                (redSeekBar.getProgress() * 15),
-                                (greenSeekBar.getProgress() * 15),
-                                (blueSeekBar.getProgress()) * 15);
-
-
-                        Log.d("MGE.APP", "colors: #" + String.format("%x", color));
-                        Log.d("MGE.APP", "color: red" + redSeekBar.getProgress() + " green:" + greenSeekBar.getProgress() + " blue: " + blueSeekBar.getProgress());
-                        Log.d("MGE.APP", "color: red" + redSeekBar.getProgress() * 15 + " green:" + greenSeekBar.getProgress() * 15 + " blue: " + blueSeekBar.getProgress() * 15);
-                        listener.onDialogPositiveClick(ColorPickerDialog.this, color);
-                    }
                 })
-                .setNegativeButton(R.string.color_pciker_dialog_cancel_de, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        listener.onDialogNegativeClick(ColorPickerDialog.this);
-                    }
-                });
-
+                .setNegativeButton(R.string.color_pciker_dialog_cancel_de, (dialog, id) -> {});
 
         return builder.create();
     }

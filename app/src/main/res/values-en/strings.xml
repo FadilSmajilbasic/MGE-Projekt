@@ -17,4 +17,10 @@
     <string name="color_picker_button_text_de">Choose color</string>
     <string name="color_pciker_dialog_cancel_de">Cancel</string>
     <string name="color_picker_dialog_save_de">Save</string>
+    <string name="color_picker_dialog_title_de">Choose UI color</string>
+    <string name="color_picker_dialog_seek_bar_red">Red</string>
+    <string name="color_picker_dialog_seek_bar_green">Green</string>
+    <string name="color_picker_dialog_seek_bar_blue">Blue</string>
+    <string name="color_picker_dialog_notice_text">In order to change the UI color the application must be restarted</string>
+    <string name="application_restart_toast">The application is going to restart</string>
 </resources>

@@ -17,4 +17,10 @@
     <string name="color_picker_button_text_de">Selezionare il colore</string>
     <string name="color_pciker_dialog_cancel_de">Cancella</string>
     <string name="color_picker_dialog_save_de">Salva</string>
+    <string name="color_picker_dialog_title_de">Seleziona il colore dell\'interfaccia grafica</string>
+    <string name="color_picker_dialog_seek_bar_red">Rosso</string>
+    <string name="color_picker_dialog_seek_bar_green">Verde</string>
+    <string name="color_picker_dialog_seek_bar_blue">Blu</string>
+    <string name="color_picker_dialog_notice_text">Per cambiare il colore dell\'interfaccia grafica bisogna riavviare l\'applicazione</string>
+    <string name="application_restart_toast">L\'applicazione verrä riavviata</string>
 </resources>
