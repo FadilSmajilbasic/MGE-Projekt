@@ -8,6 +8,7 @@
 
         <TextView
             android:paddingStart="@dimen/color_picker_dialog_padding"
+            android:paddingEnd="0dp"
             android:text="@string/color_picker_dialog_seek_bar_red"
             android:textSize="@dimen/color_picker_dialog_colors_text_size" />
     </TableRow>
@@ -31,6 +32,7 @@
 
         <TextView
             android:paddingStart="@dimen/color_picker_dialog_padding"
+            android:paddingEnd="0dp"
             android:text="@string/color_picker_dialog_seek_bar_green"
             android:textSize="@dimen/color_picker_dialog_colors_text_size" />
 
@@ -56,10 +58,9 @@
 
         <TextView
             android:paddingStart="@dimen/color_picker_dialog_padding"
+            android:paddingEnd="0dp"
             android:text="@string/color_picker_dialog_seek_bar_blue"
             android:textSize="@dimen/color_picker_dialog_colors_text_size" />
-
-
     </TableRow>
 
     <TableRow>
@@ -74,6 +75,11 @@
             android:theme="@style/BlueSeekBar"
             android:thumbTint="@color/blue"
             android:tooltipText="Blue color" />
+    </TableRow>
+    <TableRow android:layout_width="match_parent">
+
+        <TextView
+            android:text="@string/color_picker_dialog_notice_text" />
     </TableRow>
 
 </TableLayout>
