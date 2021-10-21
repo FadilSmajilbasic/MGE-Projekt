@@ -1,8 +1,12 @@
 package com.smajilbasic.kaesler.mgeprojekt;
 
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +24,9 @@ public class DivisionActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPref = getSharedPreferences(USER_PREFERENCES,MODE_PRIVATE);
+        setTheme(getThemeId(getApplication(),sharedPref));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_division);
         findViewById(R.id.calculateButton).setOnClickListener(this);

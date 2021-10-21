@@ -1,10 +1,14 @@
 package com.smajilbasic.kaesler.mgeprojekt;
 
 
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -22,6 +26,9 @@ public class AdditionActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPref = getSharedPreferences(USER_PREFERENCES,MODE_PRIVATE);
+        setTheme(getThemeId(getApplication(),sharedPref));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addition);
         findViewById(R.id.calculateButton).setOnClickListener(this);
