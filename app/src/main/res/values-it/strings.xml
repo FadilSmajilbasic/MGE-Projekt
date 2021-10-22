@@ -6,6 +6,8 @@
     <string name="second_number_de">Secondo numero</string>
     <string name="calculate_button_text_de">Calcola</string>
     <string name="result_hint_de">Risultato</string>
+    <string name="history_hint_de">Storia</string>
+    <string name="history_activity_title_de">Storia</string>
     <string name="addition_activity_title_de">Addizone</string>
     <string name="first_number_error_message_de">Il Primo numero non può essere vuoto</string>
     <string name="second_number_error_message_de">Il Secondo numero non può essere vuoto</string>

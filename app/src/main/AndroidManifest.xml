@@ -25,6 +25,9 @@
             android:name=".AdditionActivity"
             android:exported="true" />
         <activity
+        android:name=".HistoryActivity"
+        android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

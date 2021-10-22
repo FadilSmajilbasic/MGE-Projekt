@@ -18,15 +18,24 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.time.LocalDate;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    String fileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SharedPreferences.Editor editor = sharedPref.edit();
+        fileName = "history.json";
 
 
         findViewById(R.id.plusButton).setOnClickListener(this);
@@ -43,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.divideButton).setOnClickListener(this);
         findViewById(R.id.multiplyButton).setOnClickListener(this);
         findViewById(R.id.settingsButton).setOnClickListener(this);
+        findViewById(R.id.historyButton).setOnClickListener(this);
 
 
 
@@ -65,15 +76,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.plusButton) {
-            startActivity(new Intent(this, AdditionActivity.class));
+            Intent intent = new Intent(this, AdditionActivity.class);
+            intent.putExtra("fileName", fileName);
+            startActivity(intent);
         } else if (id == R.id.divideButton) {
-            startActivity(new Intent(this, DivisionActivity.class));
+            Intent intent = new Intent(this, DivisionActivity.class);
+            intent.putExtra("fileName", fileName);
+            startActivity(intent);
         } else if (id == R.id.multiplyButton) {
-            startActivity(new Intent(this, MultiplicationActivity.class));
+            Intent intent = new Intent(this, MultiplicationActivity.class);
+            intent.putExtra("fileName", fileName);
+            startActivity(intent);
         } else if (id == R.id.minusButton) {
-            startActivity(new Intent(this, SubtractionActivity.class));
+            Intent intent = new Intent(this, SubtractionActivity.class);
+            intent.putExtra("fileName", fileName);
+            startActivity(intent);
         } else if (id == R.id.settingsButton) {
             startActivity(new Intent(this, SettingsActivity.class));
+        }  else if (id == R.id.historyButton) {
+            Intent intent = new Intent(this, HistoryActivity.class);
+            intent.putExtra("fileName", fileName);
+            startActivity(intent);
         }
     }
 }

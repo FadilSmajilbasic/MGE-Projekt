@@ -6,6 +6,7 @@ import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,9 +16,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class SubtractionActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView resultBox;
+    String fileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,9 @@ public class SubtractionActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_subtraction);
         findViewById(R.id.calculateButton).setOnClickListener(this);
         resultBox = findViewById(R.id.result);
+        Intent intent = this.getIntent();
+        Bundle extras = intent.getExtras();
+        fileName = extras.getString("fileName");
     }
 
     @Override
@@ -44,6 +52,13 @@ public class SubtractionActivity extends AppCompatActivity implements View.OnCli
                     Double secondNumber = Double.valueOf(secondInput);
                     builder.append(firstInput).append(" - ").append(secondInput).append(" = ").append(firstNumber - secondNumber).append("\n");
                     resultBox.append(builder.toString());
+                    try {
+                        FileOutputStream outputStream = openFileOutput(fileName, MODE_APPEND);
+                        outputStream.write(builder.toString().getBytes());
+                        outputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();
                 }
