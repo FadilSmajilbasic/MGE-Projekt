@@ -1,5 +1,6 @@
 package com.smajilbasic.kaesler.mgeprojekt;
 
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.HISTORY_FILENAME;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
 
@@ -14,13 +15,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class MultiplicationActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView resultBox;
-    String fileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +34,6 @@ public class MultiplicationActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_multiplication);
         findViewById(R.id.calculateButton).setOnClickListener(this);
         resultBox = findViewById(R.id.result);
-        Intent intent = this.getIntent();
-        Bundle extras = intent.getExtras();
-        fileName = extras.getString("fileName");
     }
 
 
@@ -49,15 +49,10 @@ public class MultiplicationActivity extends AppCompatActivity implements View.On
                     StringBuilder builder = new StringBuilder();
                     Double firstNumber = Double.valueOf(firstInput);
                     Double secondNumber = Double.valueOf(secondInput);
-                    builder.append(firstInput).append(" * ").append(secondInput).append(" = ").append(firstNumber * secondNumber).append("\n");
+                    Double result = firstNumber * secondNumber;
+                    builder.append(firstInput).append(" * ").append(secondInput).append(" = ").append(result).append("\n");
                     resultBox.append(builder.toString());
-                    try {
-                        FileOutputStream outputStream = openFileOutput(fileName, MODE_APPEND);
-                        outputStream.write(builder.toString().getBytes());
-                        outputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    Helper.writeHistoryEntryToFile(new FileEntry(firstNumber.toString(),secondNumber.toString(),result.toString(),'*'));
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();
                 }

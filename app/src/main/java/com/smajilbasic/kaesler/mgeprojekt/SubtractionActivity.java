@@ -50,15 +50,11 @@ public class SubtractionActivity extends AppCompatActivity implements View.OnCli
                     StringBuilder builder = new StringBuilder();
                     Double firstNumber = Double.valueOf(firstInput);
                     Double secondNumber = Double.valueOf(secondInput);
-                    builder.append(firstInput).append(" - ").append(secondInput).append(" = ").append(firstNumber - secondNumber).append("\n");
+                    Double result = firstNumber - secondNumber;
+                    builder.append(firstInput).append(" - ").append(secondInput).append(" = ").append(result).append("\n");
                     resultBox.append(builder.toString());
-                    try {
-                        FileOutputStream outputStream = openFileOutput(fileName, MODE_APPEND);
-                        outputStream.write(builder.toString().getBytes());
-                        outputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+
+                    Helper.writeHistoryEntryToFile(new FileEntry(firstNumber.toString(),secondNumber.toString(),result.toString(),'*'));
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();
                 }
