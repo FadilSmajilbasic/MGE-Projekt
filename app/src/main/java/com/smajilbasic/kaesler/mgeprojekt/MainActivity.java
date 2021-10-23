@@ -15,8 +15,6 @@ import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -24,6 +22,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,34 +38,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences sharedPref = getSharedPreferences(USER_PREFERENCES,MODE_PRIVATE);
-        setTheme(getThemeId(getApplication(),sharedPref));
+        SharedPreferences sharedPref = getSharedPreferences(USER_PREFERENCES, MODE_PRIVATE);
+        setTheme(getThemeId(getApplication(), sharedPref));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SharedPreferences.Editor editor = sharedPref.edit();
         fileName = "history.json";
 
-
-        findViewById(R.id.plusButton).setOnClickListener(this);
-        findViewById(R.id.minusButton).setOnClickListener(this);
-        findViewById(R.id.divideButton).setOnClickListener(this);
-        findViewById(R.id.multiplyButton).setOnClickListener(this);
-        findViewById(R.id.settingsButton).setOnClickListener(this);
-        findViewById(R.id.historyButton).setOnClickListener(this);
-
+        AppCompatImageButton plusButton = findViewById(R.id.plusButton);
+        AppCompatImageButton minusButton = findViewById(R.id.minusButton);
+        AppCompatImageButton divideButton = findViewById(R.id.divideButton);
+        AppCompatImageButton multiplyButton = findViewById(R.id.multiplyButton);
+        AppCompatImageButton settingsButton = findViewById(R.id.settingsButton);
+        plusButton.setOnClickListener(this);
+        minusButton.setOnClickListener(this);
+        divideButton.setOnClickListener(this);
+        multiplyButton.setOnClickListener(this);
+        settingsButton.setOnClickListener(this);
 
 
         if (sharedPref.contains(Helper.DARK_MODE_KEY)) {
             if (sharedPref.getBoolean(DARK_MODE_KEY, false)) {
-                if(AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_YES)
+                if (AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_YES) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    plusButton.setImageResource(R.drawable.plus_light);
+                    minusButton.setImageResource(R.drawable.minus_light);
+                    divideButton.setImageResource(R.drawable.multiply_light);
+                    multiplyButton.setImageResource(R.drawable.divide_light);
+                }
             } else {
-                if(AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO)
+                if (AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    plusButton.setImageResource(R.drawable.minus);
+                    minusButton.setImageResource(R.drawable.plus);
+                    divideButton.setImageResource(R.drawable.divide);
+                    multiplyButton.setImageResource(R.drawable.multiply);
+                }
             }
-        }else{
-            editor.putBoolean(DARK_MODE_KEY,false);
+        } else {
+            editor.putBoolean(DARK_MODE_KEY, false);
             editor.apply();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
