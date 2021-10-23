@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -18,11 +19,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 public class AdditionActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView resultBox;
+    String fileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,9 @@ public class AdditionActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_addition);
         findViewById(R.id.calculateButton).setOnClickListener(this);
         resultBox = findViewById(R.id.result);
+        Intent intent = this.getIntent();
+        Bundle extras = intent.getExtras();
+        fileName = extras.getString("fileName");
     }
 
 
@@ -50,6 +61,14 @@ public class AdditionActivity extends AppCompatActivity implements View.OnClickL
                     Double secondNumber = Double.valueOf(secondInput);
                     builder.append(firstInput).append(" + ").append(secondInput).append(" = ").append(firstNumber + secondNumber).append("\n");
                     resultBox.append(builder.toString());
+                    try {
+                        FileOutputStream outputStream = openFileOutput(fileName, MODE_APPEND);
+                        outputStream.write(builder.toString().getBytes());
+                        outputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();
                 }
