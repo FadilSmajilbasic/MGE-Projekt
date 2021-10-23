@@ -6,36 +6,22 @@ import static com.smajilbasic.kaesler.mgeprojekt.Helper.THEME_KEY;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.DialogFragment;
 
-import android.app.Dialog;
-import android.app.TaskStackBuilder;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
-import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.Toast;
-
-import com.google.android.material.textview.MaterialTextView;
 
 /**
  * Color change source: https://stackoverflow.com/a/48517223

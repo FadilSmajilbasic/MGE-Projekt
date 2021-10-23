@@ -54,16 +54,12 @@ public class DivisionActivity extends AppCompatActivity implements View.OnClickL
                     Double firstNumber = Double.valueOf(firstInput);
                     Double secondNumber = Double.valueOf(secondInput);
                     DecimalFormat df = new DecimalFormat("#.###");
+                    Double result = firstNumber/secondNumber;
                     df.setRoundingMode(RoundingMode.HALF_UP);
-                    builder.append(firstInput).append(" / ").append(secondInput).append(" = ").append(df.format(firstNumber / secondNumber)).append("\n");
+                    builder.append(firstInput).append(" / ").append(secondInput).append(" = ").append(df.format(result)).append("\n");
                     resultBox.append(builder.toString());
-                    try {
-                        FileOutputStream outputStream = openFileOutput(fileName, MODE_APPEND);
-                        outputStream.write(builder.toString().getBytes());
-                        outputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    Helper.writeHistoryEntryToFile(new FileEntry(firstNumber.toString(),secondNumber.toString(),df.format(result),'*'));
+
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();
                 }

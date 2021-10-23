@@ -10,6 +10,7 @@ package com.smajilbasic.kaesler.mgeprojekt;
  */
 
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.DARK_MODE_KEY;
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.HISTORY_FILENAME;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
 
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -34,8 +36,6 @@ import java.time.LocalDate;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    String fileName;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sharedPref = getSharedPreferences(USER_PREFERENCES, MODE_PRIVATE);
@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SharedPreferences.Editor editor = sharedPref.edit();
-        fileName = "history.json";
 
         AppCompatImageButton plusButton = findViewById(R.id.plusButton);
         AppCompatImageButton minusButton = findViewById(R.id.minusButton);
@@ -81,6 +80,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editor.apply();
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+
+
+        File historyFile = new File(HISTORY_FILENAME);
+        if (!historyFile.exists()) {
+            try {
+                if (historyFile.createNewFile()) {
+                    Toast.makeText(this, "History file created successfully", Toast.LENGTH_LONG).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Unable to create file for history", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
@@ -88,25 +100,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = view.getId();
         if (id == R.id.plusButton) {
             Intent intent = new Intent(this, AdditionActivity.class);
-            intent.putExtra("fileName", fileName);
             startActivity(intent);
         } else if (id == R.id.divideButton) {
             Intent intent = new Intent(this, DivisionActivity.class);
-            intent.putExtra("fileName", fileName);
             startActivity(intent);
         } else if (id == R.id.multiplyButton) {
             Intent intent = new Intent(this, MultiplicationActivity.class);
-            intent.putExtra("fileName", fileName);
             startActivity(intent);
         } else if (id == R.id.minusButton) {
             Intent intent = new Intent(this, SubtractionActivity.class);
-            intent.putExtra("fileName", fileName);
             startActivity(intent);
         } else if (id == R.id.settingsButton) {
             startActivity(new Intent(this, SettingsActivity.class));
-        }  else if (id == R.id.historyButton) {
+        } else if (id == R.id.historyButton) {
             Intent intent = new Intent(this, HistoryActivity.class);
-            intent.putExtra("fileName", fileName);
             startActivity(intent);
         }
     }
