@@ -4,12 +4,15 @@ import static com.smajilbasic.kaesler.mgeprojekt.Helper.HISTORY_FILENAME;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -34,6 +37,17 @@ public class MultiplicationActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_multiplication);
         findViewById(R.id.calculateButton).setOnClickListener(this);
         resultBox = findViewById(R.id.result);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

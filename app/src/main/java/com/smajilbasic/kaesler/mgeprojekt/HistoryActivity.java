@@ -10,8 +10,11 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.JsonReader;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,5 +56,16 @@ public class HistoryActivity extends AppCompatActivity {
             deleteFile(HISTORY_FILENAME);
             Log.d("MGE.APP", "Error " + e.getMessage());
         }
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

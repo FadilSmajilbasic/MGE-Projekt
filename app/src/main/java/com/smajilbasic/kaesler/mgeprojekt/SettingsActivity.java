@@ -2,10 +2,13 @@ package com.smajilbasic.kaesler.mgeprojekt;
 
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.COLOR_KEY;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.DARK_MODE_KEY;
+import static com.smajilbasic.kaesler.mgeprojekt.Helper.NOTIFICATION_KEY;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.THEME_KEY;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
 import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
@@ -19,6 +22,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
@@ -41,25 +45,50 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         editor = sharedPref.edit();
 
         boolean darkModeSetting = sharedPref.getBoolean(DARK_MODE_KEY, false);
+        boolean notificationSetting = sharedPref.getBoolean(NOTIFICATION_KEY, true);
 
         SwitchCompat themeSwitch = findViewById(R.id.theme_switch);
+        SwitchCompat notificationSwitch = findViewById(R.id.notification_switch);
+
         themeSwitch.setChecked(darkModeSetting);
+        notificationSwitch.setChecked(notificationSetting);
+
         themeSwitch.setOnCheckedChangeListener(this);
+        notificationSwitch.setOnCheckedChangeListener(this);
 
         findViewById(R.id.color_picker_button).setOnClickListener(this);
+        findViewById(R.id.notification_switch).setOnClickListener(this);
 
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-        if (isChecked) {
-            editor.putBoolean(DARK_MODE_KEY, true);
+
+        if (compoundButton.getId() == R.id.theme_switch) {
+            if (isChecked) {
+                editor.putBoolean(DARK_MODE_KEY, true);
+                editor.apply();
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                editor.putBoolean(DARK_MODE_KEY, false);
+                editor.apply();
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        } else if (compoundButton.getId() == R.id.notification_switch) {
+            editor.putBoolean(NOTIFICATION_KEY, isChecked);
             editor.apply();
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            editor.putBoolean(DARK_MODE_KEY, false);
-            editor.apply();
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
 
