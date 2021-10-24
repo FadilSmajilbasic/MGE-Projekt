@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".SettingsActivity">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -26,7 +17,6 @@
                     android:text="@string/settings_title_de"
                     android:textSize="30sp">
                 </TextView>
-            </LinearLayout>
         </TableRow>
 
         <TableRow
@@ -59,12 +49,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:paddingTop="10dp">
+            android:paddingTop="10dp"
+            android:gravity="center">
 
-            <LinearLayout
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/color_picker_button"
                     android:layout_width="wrap_content"
@@ -73,10 +60,6 @@
 
                 </androidx.appcompat.widget.AppCompatButton>
 
-            </LinearLayout>
-
-
         </TableRow>
 
     </TableLayout>
-</LinearLayout>
