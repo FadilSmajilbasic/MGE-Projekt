@@ -25,4 +25,6 @@
     <string name="color_picker_dialog_seek_bar_blue">Blue</string>
     <string name="color_picker_dialog_notice_text">In order to change the UI color the application must be restarted</string>
     <string name="application_restart_toast">The application is going to restart</string>
+    <string name="Notification_title_de">Welcome</string>
+    <string name="greeting_notification_text_de">"Welcome to the Calculator Application. Today is the "</string>
 </resources>

@@ -29,4 +29,8 @@
         <item>Italian</item>
     </string-array>
     <string name="application_restart_toast">Die Applikation wird neu gestartet</string>
+    <string name="channel_name" translatable="false">MGE_project_notification_channel</string>
+    <string name="channel_description" translatable="false">Channel for the notifications of the MGE calculator app</string>
+    <string name="Notification_title_de">Herzlich Wilkommen</string>
+    <string name="greeting_notification_text_de">Herzlich sie wieder zu sehen. Heute ist der</string>
 </resources>

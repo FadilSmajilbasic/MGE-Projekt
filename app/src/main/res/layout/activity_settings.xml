@@ -45,7 +45,21 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="10dp">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/notification_switch"
+                android:text="Greeting notification"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="10dp">
 
             <LinearLayout
                 android:layout_gravity="center"

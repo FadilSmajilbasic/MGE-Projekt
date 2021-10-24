@@ -25,4 +25,6 @@
     <string name="color_picker_dialog_seek_bar_blue">Blu</string>
     <string name="color_picker_dialog_notice_text">Per cambiare il colore dell\'interfaccia grafica bisogna riavviare l\'applicazione</string>
     <string name="application_restart_toast">L\'applicazione verrä riavviata</string>
+    <string name="Notification_title_de">Benvenuto</string>
+    <string name="greeting_notification_text_de">Benvenuto nella applicazione calcolatrice. Oggi è il</string>
 </resources>
