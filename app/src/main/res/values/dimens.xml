@@ -2,4 +2,5 @@
 <resources>
     <dimen name="color_picker_dialog_padding">30dp</dimen>
     <dimen name="color_picker_dialog_colors_text_size">20sp</dimen>
+    <dimen name="main_activity_icon_size">100dp</dimen>
 </resources>

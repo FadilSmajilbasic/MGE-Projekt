@@ -14,21 +14,16 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
-            <LinearLayout
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addition_activity_title_de"
+                android:textSize="30sp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/addition_activity_title_de"
-                    android:textSize="30sp">
-
-                </TextView>
-            </LinearLayout>
+            </TextView>
         </TableRow>
 
         <TableRow
@@ -55,22 +50,17 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
 
-            <LinearLayout
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/calculateButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/calculate_button_text_de">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/calculateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calculate_button_text_de">
 
-                </androidx.appcompat.widget.AppCompatButton>
-            </LinearLayout>
-
+            </androidx.appcompat.widget.AppCompatButton>
 
         </TableRow>
 
@@ -84,7 +74,7 @@
         android:gravity="top"
         android:hint="@string/result_hint_de"
         android:padding="20dp"
-        android:singleLine="false"/>
+        android:singleLine="false" />
 
 
 </LinearLayout>
