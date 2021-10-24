@@ -36,36 +36,22 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         resultBox = findViewById(R.id.result);
         resultBox.setMovementMethod(new ScrollingMovementMethod());
-//        Intent intent = this.getIntent();
-//        Bundle extras = intent.getExtras();
-
-//
-//        fileName = extras.getString("fileName");
-//
-//        File folder = getFilesDir();
-//        File file = new File(folder, fileName);
-//
-//        int length = (int) file.length();
-//        byte[] bytes = new byte[length];
-//        try (FileInputStream inputStream = new FileInputStream(file)) {
-//            inputStream.read(bytes);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        String output = new String(bytes);
-//        append
 
         ObjectMapper mapper = new ObjectMapper();
 
-        List<FileEntry> history = null;
         try {
-            history = Arrays.asList(mapper.readValue(Paths.get(HISTORY_FILENAME).toFile(), FileEntry[].class));
+
+            FileInputStream fileInputStream = openFileInput(HISTORY_FILENAME);
+
+            List<FileEntry> history = Arrays.asList(mapper.readValue(fileInputStream, FileEntry[].class));
+            fileInputStream.close();
 
             history.forEach(entry -> resultBox.append(entry.toString()));
+
         } catch (IOException e) {
             e.printStackTrace();
+            deleteFile(HISTORY_FILENAME);
+            Log.d("MGE.APP", "Error " + e.getMessage());
         }
-
-
     }
 }

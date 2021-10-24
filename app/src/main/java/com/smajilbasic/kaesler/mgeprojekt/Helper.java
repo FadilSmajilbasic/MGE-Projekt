@@ -11,8 +11,13 @@ import android.widget.Toast;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 public class Helper {
@@ -24,30 +29,37 @@ public class Helper {
     protected static final String THEME_KEY = "theme_to_set";
     protected static final String HISTORY_FILENAME = "calculator_history.json";
 
-    public static int getThemeId(Application application, SharedPreferences sharedPref){
-        String themeName = sharedPref.getString(THEME_KEY,"Theme.MGEProjekt");
-        return application.getResources().getIdentifier(themeName,"style", application.getPackageName());
+    public static int getThemeId(Application application, SharedPreferences sharedPref) {
+        String themeName = sharedPref.getString(THEME_KEY, "Theme.MGEProjekt");
+        return application.getResources().getIdentifier(themeName, "style", application.getPackageName());
     }
 
-    public static boolean writeHistoryEntryToFile(FileEntry entry){
-
-        ObjectMapper mapper = new ObjectMapper();
+    public static boolean writeHistoryEntryToFile(Context context, FileEntry entry) {
 
         try {
-            File historyFile = new File(HISTORY_FILENAME);
-            if(!historyFile.exists()) {
-                if(!historyFile.createNewFile()){
-                    return false;
-                }
+            ObjectMapper mapper = new ObjectMapper();
+            ArrayList<FileEntry> historyList ;
+            try {
+                FileInputStream fileInputStream = context.openFileInput(HISTORY_FILENAME);
+                historyList = new ArrayList<>(Arrays.asList(mapper.readValue(fileInputStream, FileEntry[].class)));
+                fileInputStream.close();
+            }catch (IOException e){
+                Log.d("MGE.APP","Error occurred while saving entry: " + e.getMessage());
+                historyList = new ArrayList<>();
             }
 
-            mapper.writeValue(Paths.get(HISTORY_FILENAME).toFile(), entry);
+            historyList.add(entry);
+            FileOutputStream fileOutputStream = context.openFileOutput(HISTORY_FILENAME, Context.MODE_PRIVATE);
+            mapper.writeValue(fileOutputStream, historyList);
+            fileOutputStream.close();
             return true;
+
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            Log.d("MGE.APP", "Error: " + e.getMessage());
+            Toast.makeText(context, "Unable to create file for history", Toast.LENGTH_LONG).show();
         }
-
+        return false;
 
     }
 

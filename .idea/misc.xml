@@ -3,18 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/mins/Studium/MGE/MiniProjekt/MGE-Projekt/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21388888888888888" />
-        <entry key="..\:/mins/Studium/MGE/MiniProjekt/MGE-Projekt/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.21388888888888888" />
-        <entry key="..\:/mins/Studium/MGE/MiniProjekt/MGE-Projekt/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21388888888888888" />
         <entry key="..\:/mins/Studium/MGE/MiniProjekt/MGE-Projekt/app/src/main/res/layout/activity_addition.xml" value="0.36666666666666664" />
         <entry key="..\:/mins/Studium/MGE/MiniProjekt/MGE-Projekt/app/src/main/res/layout/activity_division.xml" value="0.15925925925925927" />
-        <entry key="..\:/mins/Studium/MGE/MiniProjekt/MGE-Projekt/app/src/main/res/layout/activity_history.xml" value="0.1" />
-        <entry key="..\:/mins/Studium/MGE/MiniProjekt/MGE-Projekt/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/mins/Studium/MGE/MiniProjekt/MGE-Projekt/app/src/main/res/layout/activity_multiplication.xml" value="0.15925925925925927" />
-        <entry key="..\:/mins/Studium/MGE/MiniProjekt/MGE-Projekt/app/src/main/res/layout/activity_settings.xml" value="0.1" />
         <entry key="..\:/mins/Studium/MGE/MiniProjekt/MGE-Projekt/app/src/main/res/layout/activity_subtraction.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/activity_addition.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_division.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/activity_history.xml" value="0.13489583333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1322463768115942" />
         <entry key="app/src/main/res/layout/activity_multiplication.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.19791666666666666" />

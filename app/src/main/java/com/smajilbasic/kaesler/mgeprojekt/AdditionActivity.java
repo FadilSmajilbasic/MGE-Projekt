@@ -30,7 +30,6 @@ import java.util.Locale;
 public class AdditionActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView resultBox;
-    String fileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +40,6 @@ public class AdditionActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_addition);
         findViewById(R.id.calculateButton).setOnClickListener(this);
         resultBox = findViewById(R.id.result);
-        Intent intent = this.getIntent();
-        Bundle extras = intent.getExtras();
-        fileName = extras.getString("fileName");
     }
 
 
@@ -62,7 +58,7 @@ public class AdditionActivity extends AppCompatActivity implements View.OnClickL
                     Double result = firstNumber + secondNumber;
                     builder.append(firstInput).append(" + ").append(secondInput).append(" = ").append(result).append("\n");
                     resultBox.append(builder.toString());
-                    Helper.writeHistoryEntryToFile(new FileEntry(firstNumber.toString(),secondNumber.toString(),result.toString(),'*'));
+                    Helper.writeHistoryEntryToFile(this, new FileEntry(firstNumber.toString(),secondNumber.toString(),result.toString(),'+'));
 
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();

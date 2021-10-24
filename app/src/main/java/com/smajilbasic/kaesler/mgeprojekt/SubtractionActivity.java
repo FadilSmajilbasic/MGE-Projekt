@@ -22,7 +22,6 @@ import java.io.IOException;
 public class SubtractionActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView resultBox;
-    String fileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +32,6 @@ public class SubtractionActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_subtraction);
         findViewById(R.id.calculateButton).setOnClickListener(this);
         resultBox = findViewById(R.id.result);
-        Intent intent = this.getIntent();
-        Bundle extras = intent.getExtras();
-        fileName = extras.getString("fileName");
     }
 
     @Override
@@ -54,7 +50,7 @@ public class SubtractionActivity extends AppCompatActivity implements View.OnCli
                     builder.append(firstInput).append(" - ").append(secondInput).append(" = ").append(result).append("\n");
                     resultBox.append(builder.toString());
 
-                    Helper.writeHistoryEntryToFile(new FileEntry(firstNumber.toString(),secondNumber.toString(),result.toString(),'*'));
+                    Helper.writeHistoryEntryToFile(this, new FileEntry(firstNumber.toString(),secondNumber.toString(),result.toString(),'-'));
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();
                 }
