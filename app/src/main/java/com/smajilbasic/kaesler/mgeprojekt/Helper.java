@@ -52,15 +52,12 @@ public class Helper {
             FileOutputStream fileOutputStream = context.openFileOutput(HISTORY_FILENAME, Context.MODE_PRIVATE);
             mapper.writeValue(fileOutputStream, historyList);
             fileOutputStream.close();
-            Log.d("MGE.APP", "Data saved ");
-
             return true;
 
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("MGE.APP", "Error: " + e.getMessage());
             Toast.makeText(context, "Unable to create file for history", Toast.LENGTH_LONG).show();
-
         }
         return false;
 
