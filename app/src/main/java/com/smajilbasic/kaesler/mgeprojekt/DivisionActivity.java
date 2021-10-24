@@ -24,7 +24,6 @@ import java.text.DecimalFormat;
 public class DivisionActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView resultBox;
-    String fileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +34,6 @@ public class DivisionActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_division);
         findViewById(R.id.calculateButton).setOnClickListener(this);
         resultBox = findViewById(R.id.result);
-        Intent intent = this.getIntent();
-        Bundle extras = intent.getExtras();
-        fileName = extras.getString("fileName");
     }
 
 
@@ -58,7 +54,7 @@ public class DivisionActivity extends AppCompatActivity implements View.OnClickL
                     df.setRoundingMode(RoundingMode.HALF_UP);
                     builder.append(firstInput).append(" / ").append(secondInput).append(" = ").append(df.format(result)).append("\n");
                     resultBox.append(builder.toString());
-                    Helper.writeHistoryEntryToFile(new FileEntry(firstNumber.toString(),secondNumber.toString(),df.format(result),'*'));
+                    Helper.writeHistoryEntryToFile(this, new FileEntry(firstNumber.toString(),secondNumber.toString(),df.format(result),'/'));
 
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();

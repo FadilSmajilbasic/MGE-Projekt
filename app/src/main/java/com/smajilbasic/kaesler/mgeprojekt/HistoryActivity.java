@@ -57,15 +57,21 @@ public class HistoryActivity extends AppCompatActivity {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        List<FileEntry> history = null;
         try {
-            history = Arrays.asList(mapper.readValue(Paths.get(HISTORY_FILENAME).toFile(), FileEntry[].class));
+
+            FileInputStream fileInputStream = openFileInput(HISTORY_FILENAME);
+
+            List<FileEntry> history = Arrays.asList(mapper.readValue(fileInputStream, FileEntry[].class));
+            fileInputStream.close();
 
             history.forEach(entry -> resultBox.append(entry.toString()));
+
         } catch (IOException e) {
             e.printStackTrace();
+            deleteFile(HISTORY_FILENAME);
+            Log.d("MGE.APP", "Error " + e.getMessage());
         }
-
+        Log.d("MGE.APP", "Opened activity");
 
     }
 }

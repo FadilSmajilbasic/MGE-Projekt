@@ -52,7 +52,7 @@ public class MultiplicationActivity extends AppCompatActivity implements View.On
                     Double result = firstNumber * secondNumber;
                     builder.append(firstInput).append(" * ").append(secondInput).append(" = ").append(result).append("\n");
                     resultBox.append(builder.toString());
-                    Helper.writeHistoryEntryToFile(new FileEntry(firstNumber.toString(),secondNumber.toString(),result.toString(),'*'));
+                    Helper.writeHistoryEntryToFile(this, new FileEntry(firstNumber.toString(),secondNumber.toString(),result.toString(),'*'));
                 } else {
                     Toast.makeText(this, getString(R.string.second_number_error_message_de), Toast.LENGTH_LONG).show();
                 }

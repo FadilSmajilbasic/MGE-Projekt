@@ -17,21 +17,10 @@ import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatImageButton;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.time.LocalDate;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -50,12 +39,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AppCompatImageButton divideButton = findViewById(R.id.divideButton);
         AppCompatImageButton multiplyButton = findViewById(R.id.multiplyButton);
         AppCompatImageButton settingsButton = findViewById(R.id.settingsButton);
+        AppCompatImageButton historyButton = findViewById(R.id.historyButton);
+
         plusButton.setOnClickListener(this);
         minusButton.setOnClickListener(this);
         divideButton.setOnClickListener(this);
         multiplyButton.setOnClickListener(this);
         settingsButton.setOnClickListener(this);
-
+        historyButton.setOnClickListener(this);
 
         if (sharedPref.contains(Helper.DARK_MODE_KEY)) {
             if (sharedPref.getBoolean(DARK_MODE_KEY, false)) {
@@ -65,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     minusButton.setImageResource(R.drawable.minus_light);
                     divideButton.setImageResource(R.drawable.multiply_light);
                     multiplyButton.setImageResource(R.drawable.divide_light);
+                    historyButton.setImageResource(R.drawable.history_light);
                 }
             } else {
                 if (AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO) {
@@ -73,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     minusButton.setImageResource(R.drawable.plus);
                     divideButton.setImageResource(R.drawable.divide);
                     multiplyButton.setImageResource(R.drawable.multiply);
+                    historyButton.setImageResource(R.drawable.history);
                 }
             }
         } else {
@@ -82,17 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-        File historyFile = new File(HISTORY_FILENAME);
-        if (!historyFile.exists()) {
-            try {
-                if (historyFile.createNewFile()) {
-                    Toast.makeText(this, "History file created successfully", Toast.LENGTH_LONG).show();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(this, "Unable to create file for history", Toast.LENGTH_LONG).show();
-            }
-        }
+
     }
 
     @Override
