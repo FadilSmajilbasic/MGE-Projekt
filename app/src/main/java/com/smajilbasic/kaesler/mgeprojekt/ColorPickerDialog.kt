@@ -33,14 +33,14 @@ class ColorPickerDialog : DialogFragment() {
         greenSeekBar.progress = Color.green(color) / 15
         blueSeekBar.progress = Color.blue(color) / 15
         builder.setMessage(R.string.color_picker_dialog_title_de)
-                .setPositiveButton(R.string.color_picker_dialog_save_de) { dialog: DialogInterface?, id: Int ->
+                .setPositiveButton(R.string.color_picker_dialog_save_de) { _: DialogInterface?, _: Int ->
                     val colorRead = Color.rgb(
                             redSeekBar.progress * 15,
                             greenSeekBar.progress * 15,
                             blueSeekBar.progress * 15)
                     listener!!.onDialogPositiveClick(this@ColorPickerDialog, colorRead)
                 }
-                .setNegativeButton(R.string.color_pciker_dialog_cancel_de) { dialog: DialogInterface?, id: Int -> }
+                .setNegativeButton(R.string.color_pciker_dialog_cancel_de) { _: DialogInterface?, _: Int -> }
         return builder.create()
     }
 
