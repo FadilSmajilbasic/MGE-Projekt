@@ -26,7 +26,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -50,12 +50,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        AppCompatImageButton plusButton = findViewById(R.id.plusButton);
-        AppCompatImageButton minusButton = findViewById(R.id.minusButton);
-        AppCompatImageButton divideButton = findViewById(R.id.divideButton);
-        AppCompatImageButton multiplyButton = findViewById(R.id.multiplyButton);
-        AppCompatImageButton settingsButton = findViewById(R.id.settingsButton);
-        AppCompatImageButton historyButton = findViewById(R.id.historyButton);
+        AppCompatButton plusButton = findViewById(R.id.plusButton);
+        AppCompatButton minusButton = findViewById(R.id.minusButton);
+        AppCompatButton divideButton = findViewById(R.id.divideButton);
+        AppCompatButton multiplyButton = findViewById(R.id.multiplyButton);
+        AppCompatButton settingsButton = findViewById(R.id.settingsButton);
+        AppCompatButton historyButton = findViewById(R.id.historyButton);
 
         plusButton.setOnClickListener(this);
         minusButton.setOnClickListener(this);
@@ -66,23 +66,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (sharedPref.contains(Helper.DARK_MODE_KEY)) {
             if (sharedPref.getBoolean(DARK_MODE_KEY, false)) {
-                if (AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_YES) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    plusButton.setImageResource(R.drawable.minus);
-                    minusButton.setImageResource(R.drawable.plus);
-                    divideButton.setImageResource(R.drawable.divide);
-                    multiplyButton.setImageResource(R.drawable.multiply);
-                    historyButton.setImageResource(R.drawable.history);
-                }
-            } else if(sharedPref.getBoolean(DARK_MODE_KEY, true)){
-                if (AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO) {
+                    plusButton.setBackgroundResource(R.drawable.minus);
+                    minusButton.setBackgroundResource(R.drawable.plus);
+                    divideButton.setBackgroundResource(R.drawable.divide);
+                    multiplyButton.setBackgroundResource(R.drawable.multiply);
+                    historyButton.setBackgroundResource(R.drawable.history_light);
+            } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    plusButton.setImageResource(R.drawable.plus_light);
-                    minusButton.setImageResource(R.drawable.minus_light);
-                    divideButton.setImageResource(R.drawable.multiply_light);
-                    multiplyButton.setImageResource(R.drawable.divide_light);
-                    historyButton.setImageResource(R.drawable.history_light);
-                }
+                    plusButton.setBackgroundResource(R.drawable.plus_light);
+                    minusButton.setBackgroundResource(R.drawable.minus_light);
+                    divideButton.setBackgroundResource(R.drawable.multiply_light);
+                    multiplyButton.setBackgroundResource(R.drawable.divide_light);
+                    historyButton.setBackgroundResource(R.drawable.history);
+
             }
         } else {
             editor.putBoolean(DARK_MODE_KEY, false);
