@@ -1,67 +1,47 @@
-package com.smajilbasic.kaesler.mgeprojekt;
+package com.smajilbasic.kaesler.mgeprojekt
 
-import android.app.Application;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.Log;
-import android.widget.Toast;
+import android.app.Application
+import android.content.*
+import android.util.Log
+import android.widget.Toast
+import com.fasterxml.jackson.databind.ObjectMapper
+import java.io.IOException
+import java.util.*
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-
-public class Helper {
-
-
-    protected static final String COLOR_KEY = "color_set_key";
-    protected static final String USER_PREFERENCES = "user_preferences_name";
-    protected static final String DARK_MODE_KEY = "dark_mode_setting";
-    protected static final String THEME_KEY = "theme_to_set";
-    protected static final String HISTORY_FILENAME = "calculator_history.json";
-    protected static final String NOTIFICATION_KEY = "notification_key";
-
-    public static int getThemeId(Application application, SharedPreferences sharedPref) {
-        String themeName = sharedPref.getString(THEME_KEY, "Theme.MGEProjekt");
-        return application.getResources().getIdentifier(themeName, "style", application.getPackageName());
+object Helper {
+    const val COLOR_KEY = "color_set_key"
+    const val USER_PREFERENCES = "user_preferences_name"
+    const val DARK_MODE_KEY = "dark_mode_setting"
+    const val THEME_KEY = "theme_to_set"
+    const val HISTORY_FILENAME = "calculator_history.json"
+    const val NOTIFICATION_KEY = "notification_key"
+    fun getThemeId(application: Application, sharedPref: SharedPreferences?): Int {
+        val themeName = sharedPref!!.getString(THEME_KEY, "Theme.MGEProjekt")
+        return application.resources.getIdentifier(themeName, "style", application.packageName)
     }
 
-    public static boolean writeHistoryEntryToFile(Context context, FileEntry entry) {
-
+    fun writeHistoryEntryToFile(context: Context, entry: FileEntry?): Boolean {
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            ArrayList<FileEntry> historyList ;
+            val mapper = ObjectMapper()
+            var historyList: ArrayList<FileEntry?>
             try {
-                FileInputStream fileInputStream = context.openFileInput(HISTORY_FILENAME);
-                historyList = new ArrayList<>(Arrays.asList(mapper.readValue(fileInputStream, FileEntry[].class)));
-                fileInputStream.close();
-            }catch (IOException e){
-                Log.d("MGE.APP","Error occurred while saving entry: " + e.getMessage());
-                historyList = new ArrayList<>();
+                val fileInputStream = context.openFileInput(HISTORY_FILENAME)
+                historyList = ArrayList(Arrays.asList(*mapper.readValue(fileInputStream, Array<FileEntry>::class.java)))
+                fileInputStream.close()
+            } catch (e: IOException) {
+                Log.d("MGE.APP", "Error occurred while saving entry: " + e.message)
+                historyList = ArrayList()
             }
-
-            historyList.add(entry);
-            FileOutputStream fileOutputStream = context.openFileOutput(HISTORY_FILENAME, Context.MODE_PRIVATE);
-            mapper.writeValue(fileOutputStream, historyList);
-            fileOutputStream.close();
-            return true;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.d("MGE.APP", "Error: " + e.getMessage());
-            Toast.makeText(context, "Unable to create file for history", Toast.LENGTH_LONG).show();
+            historyList.add(entry)
+            val fileOutputStream = context.openFileOutput(HISTORY_FILENAME, Context.MODE_PRIVATE)
+            mapper.writeValue(fileOutputStream, historyList)
+            fileOutputStream.close()
+            return true
+        } catch (e: IOException) {
+            e.printStackTrace()
+            Log.d("MGE.APP", "Error: " + e.message)
+            Toast.makeText(context, "Unable to create file for history", Toast.LENGTH_LONG).show()
         }
-        return false;
-
+        return false
     }
-
 }

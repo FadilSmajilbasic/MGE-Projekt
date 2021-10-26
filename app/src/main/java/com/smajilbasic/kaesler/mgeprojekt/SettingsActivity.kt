@@ -1,138 +1,145 @@
-package com.smajilbasic.kaesler.mgeprojekt;
+package com.smajilbasic.kaesler.mgeprojekt
 
-import static com.smajilbasic.kaesler.mgeprojekt.Helper.COLOR_KEY;
-import static com.smajilbasic.kaesler.mgeprojekt.Helper.DARK_MODE_KEY;
-import static com.smajilbasic.kaesler.mgeprojekt.Helper.NOTIFICATION_KEY;
-import static com.smajilbasic.kaesler.mgeprojekt.Helper.THEME_KEY;
-import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
-import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.fragment.app.DialogFragment;
-
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.Toast;
+import android.app.Application
+import com.smajilbasic.kaesler.mgeprojekt.FileEntry
+import com.fasterxml.jackson.databind.ObjectMapper
+import java.util.ArrayList
+import java.io.FileInputStream
+import java.util.Arrays
+import java.io.IOException
+import android.util.Log
+import java.io.FileOutputStream
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import android.os.Bundle
+import com.smajilbasic.kaesler.mgeprojekt.R
+import android.content.SharedPreferences.Editor
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.app.AppCompatDelegate
+import com.smajilbasic.kaesler.mgeprojekt.MainActivity
+import android.app.PendingIntent
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import android.os.Build
+import android.app.NotificationManager
+import android.app.NotificationChannel
+import com.smajilbasic.kaesler.mgeprojekt.AdditionActivity
+import com.smajilbasic.kaesler.mgeprojekt.DivisionActivity
+import com.smajilbasic.kaesler.mgeprojekt.MultiplicationActivity
+import com.smajilbasic.kaesler.mgeprojekt.SubtractionActivity
+import com.smajilbasic.kaesler.mgeprojekt.SettingsActivity
+import com.smajilbasic.kaesler.mgeprojekt.HistoryActivity
+import android.widget.TextView
+import android.text.method.ScrollingMovementMethod
+import android.view.MenuItem
+import android.widget.EditText
+import java.lang.StringBuilder
+import java.math.RoundingMode
+import android.widget.CompoundButton
+import com.smajilbasic.kaesler.mgeprojekt.ColorPickerDialog.ColorPickerDialogListener
+import androidx.appcompat.widget.SwitchCompat
+import com.smajilbasic.kaesler.mgeprojekt.ColorPickerDialog
+import android.graphics.Color
+import java.lang.Runnable
+import android.content.pm.PackageManager
+import android.app.Dialog
+import android.app.Activity
+import android.content.*
+import android.os.Handler
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.SeekBar
+import androidx.fragment.app.DialogFragment
+import java.lang.ClassCastException
 
 /**
  * Color change source: https://stackoverflow.com/a/48517223
  */
-public class SettingsActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, ColorPickerDialog.ColorPickerDialogListener {
+class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener, View.OnClickListener, ColorPickerDialogListener {
+    var sharedPref: SharedPreferences? = null
+    private var editor: Editor? = null
 
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor editor;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedPref = getSharedPreferences(Helper.USER_PREFERENCES, MODE_PRIVATE)
+        this.sharedPref = sharedPref;
+        setTheme(Helper.getThemeId(application, sharedPref))
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_settings)
+        editor = sharedPref.edit()
+        val darkModeSetting = sharedPref.getBoolean(Helper.DARK_MODE_KEY, false)
+        val notificationSetting = sharedPref.getBoolean(Helper.NOTIFICATION_KEY, true)
+        val themeSwitch = findViewById<SwitchCompat>(R.id.theme_switch)
+        val notificationSwitch = findViewById<SwitchCompat>(R.id.notification_switch)
+        themeSwitch.isChecked = darkModeSetting
+        notificationSwitch.isChecked = notificationSetting
+        themeSwitch.setOnCheckedChangeListener(this)
+        notificationSwitch.setOnCheckedChangeListener(this)
+        findViewById<View>(R.id.color_picker_button).setOnClickListener(this)
+        findViewById<View>(R.id.notification_switch).setOnClickListener(this)
+        val actionBar = supportActionBar
+        actionBar!!.setDisplayHomeAsUpEnabled(true)
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        sharedPref = getSharedPreferences(USER_PREFERENCES, MODE_PRIVATE);
-        setTheme(getThemeId(getApplication(), sharedPref));
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-        editor = sharedPref.edit();
-
-        boolean darkModeSetting = sharedPref.getBoolean(DARK_MODE_KEY, false);
-        boolean notificationSetting = sharedPref.getBoolean(NOTIFICATION_KEY, true);
-
-        SwitchCompat themeSwitch = findViewById(R.id.theme_switch);
-        SwitchCompat notificationSwitch = findViewById(R.id.notification_switch);
-
-        themeSwitch.setChecked(darkModeSetting);
-        notificationSwitch.setChecked(notificationSetting);
-
-        themeSwitch.setOnCheckedChangeListener(this);
-        notificationSwitch.setOnCheckedChangeListener(this);
-
-        findViewById(R.id.color_picker_button).setOnClickListener(this);
-        findViewById(R.id.notification_switch).setOnClickListener(this);
-
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            this.finish();
-            return true;
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item)
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-
-        if (compoundButton.getId() == R.id.theme_switch) {
+    override fun onCheckedChanged(compoundButton: CompoundButton, isChecked: Boolean) {
+        if (compoundButton.id == R.id.theme_switch) {
             if (isChecked) {
-                editor.putBoolean(DARK_MODE_KEY, true);
-                editor.apply();
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                editor!!.putBoolean(Helper.DARK_MODE_KEY, true)
+                editor!!.apply()
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             } else {
-                editor.putBoolean(DARK_MODE_KEY, false);
-                editor.apply();
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                editor!!.putBoolean(Helper.DARK_MODE_KEY, false)
+                editor!!.apply()
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-        } else if (compoundButton.getId() == R.id.notification_switch) {
-            editor.putBoolean(NOTIFICATION_KEY, isChecked);
-            editor.apply();
+        } else if (compoundButton.id == R.id.notification_switch) {
+            editor!!.putBoolean(Helper.NOTIFICATION_KEY, isChecked)
+            editor!!.apply()
         }
     }
 
-    @Override
-    public void onClick(View view) {
-        if (view.getId() == R.id.color_picker_button) {
-            ColorPickerDialog colorPickerDialog = ColorPickerDialog.newInstance(sharedPref.getInt(COLOR_KEY, 0));
-            colorPickerDialog.show(getSupportFragmentManager(), "ColorPickerFragment");
+    override fun onClick(view: View) {
+        if (view.id == R.id.color_picker_button) {
+            val colorPickerDialog: ColorPickerDialog = ColorPickerDialog.newInstance(sharedPref!!.getInt(Helper.COLOR_KEY, 0))
+            colorPickerDialog.show(supportFragmentManager, "ColorPickerFragment")
         }
     }
 
-    @Override
-    public void onDialogPositiveClick(DialogFragment dialog, int colors) {
-
-        editor.putInt(Helper.COLOR_KEY, colors);
-        editor.apply();
-
-
-        String themeName = "T_" + String.format("%02X", Color.red(colors))
-                + String.format("%02X", Color.green(colors))
-                + String.format("%02X", Color.blue(colors));
-        themeName = themeName.toLowerCase();
-        editor.putString(THEME_KEY, themeName);
-        editor.apply();
-        Toast.makeText(getApplicationContext(), R.string.application_restart_toast, Toast.LENGTH_SHORT).show();
-
-        Handler handler = new Handler();
-
-        Runnable r = () -> triggerRebirth(getApplicationContext());
-        handler.postDelayed(r, 2000);
+    override fun onDialogPositiveClick(dialog: DialogFragment?, colors: Int) {
+        editor!!.putInt(Helper.COLOR_KEY, colors)
+        editor!!.apply()
+        var themeName = "T_" + String.format("%02X", Color.red(colors)) + String.format("%02X", Color.green(colors)) + String.format("%02X", Color.blue(colors))
+        themeName = themeName.lowercase()
+        editor!!.putString(Helper.THEME_KEY, themeName)
+        editor!!.apply()
+        Toast.makeText(applicationContext, R.string.application_restart_toast, Toast.LENGTH_SHORT).show()
+        val handler = Handler()
+        val r = Runnable { triggerRebirth(applicationContext) }
+        handler.postDelayed(r, 2000)
     }
 
-    /**
-     * source: https://stackoverflow.com/a/46848226
-     *
-     * @param context the context of the application
-     */
-    public static void triggerRebirth(Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
-        ComponentName componentName = intent.getComponent();
-        Intent mainIntent = Intent.makeRestartActivityTask(componentName);
-
-        context.startActivity(mainIntent);
-        Runtime.getRuntime().exit(0);
+    companion object {
+        /**
+         * source: https://stackoverflow.com/a/46848226
+         *
+         * @param context the context of the application
+         */
+        fun triggerRebirth(context: Context) {
+            val packageManager = context.packageManager
+            val intent = packageManager.getLaunchIntentForPackage(context.packageName)
+            val componentName = intent!!.component
+            val mainIntent = Intent.makeRestartActivityTask(componentName)
+            context.startActivity(mainIntent)
+            Runtime.getRuntime().exit(0)
+        }
     }
 }

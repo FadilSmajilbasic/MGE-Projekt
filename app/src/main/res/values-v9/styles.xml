@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="t_000000" parent="@style/Theme.MGEProjekt">
         <item name="colorPrimary">#000000</item>
         <item name="colorPrimaryDark">#000000</item>
@@ -721,7 +721,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_004bc3" parent="@style/Theme.MGEProjekt">
+    <style name="t_004bc3" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#004bc3</item>
         <item name="colorPrimaryDark">#003588</item>
         <item name="colorAccent">#004bc3</item>
@@ -1029,7 +1029,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_00782d" parent="@style/Theme.MGEProjekt">
+    <style name="t_00782d" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#00782d</item>
         <item name="colorPrimaryDark">#005420</item>
         <item name="colorAccent">#00782d</item>
@@ -1946,7 +1946,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_00e178" parent="@style/Theme.MGEProjekt">
+    <style name="t_00e178" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#00e178</item>
         <item name="colorPrimaryDark">#009d54</item>
         <item name="colorAccent">#00e178</item>
@@ -2177,7 +2177,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_00ff4b" parent="@style/Theme.MGEProjekt">
+    <style name="t_00ff4b" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#00ff4b</item>
         <item name="colorPrimaryDark">#00b235</item>
         <item name="colorAccent">#00ff4b</item>
@@ -2240,7 +2240,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_00ffd2" parent="@style/Theme.MGEProjekt">
+    <style name="t_00ffd2" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#00ffd2</item>
         <item name="colorPrimaryDark">#00b293</item>
         <item name="colorAccent">#00ffd2</item>
@@ -2415,7 +2415,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_0f0f2d" parent="@style/Theme.MGEProjekt">
+    <style name="t_0f0f2d" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#0f0f2d</item>
         <item name="colorPrimaryDark">#0b0b20</item>
         <item name="colorAccent">#0f0f2d</item>
@@ -3192,7 +3192,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_0f695a" parent="@style/Theme.MGEProjekt">
+    <style name="t_0f695a" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#0f695a</item>
         <item name="colorPrimaryDark">#0b4a3f</item>
         <item name="colorAccent">#0f695a</item>
@@ -3745,7 +3745,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_0fa5c3" parent="@style/Theme.MGEProjekt">
+    <style name="t_0fa5c3" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#0fa5c3</item>
         <item name="colorPrimaryDark">#0b7488</item>
         <item name="colorAccent">#0fa5c3</item>
@@ -5236,7 +5236,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_1e4b96" parent="@style/Theme.MGEProjekt">
+    <style name="t_1e4b96" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#1e4b96</item>
         <item name="colorPrimaryDark">#153569</item>
         <item name="colorAccent">#1e4b96</item>
@@ -5656,7 +5656,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_1e78f0" parent="@style/Theme.MGEProjekt">
+    <style name="t_1e78f0" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#1e78f0</item>
         <item name="colorPrimaryDark">#1554a8</item>
         <item name="colorAccent">#1e78f0</item>
@@ -6804,7 +6804,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_2d0000" parent="@style/Theme.MGEProjekt">
+    <style name="t_2d0000" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#2d0000</item>
         <item name="colorPrimaryDark">#200000</item>
         <item name="colorAccent">#2d0000</item>
@@ -6979,7 +6979,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_2d0f69" parent="@style/Theme.MGEProjekt">
+    <style name="t_2d0f69" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#2d0f69</item>
         <item name="colorPrimaryDark">#200b4a</item>
         <item name="colorAccent">#2d0f69</item>
@@ -10122,7 +10122,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_3c785a" parent="@style/Theme.MGEProjekt">
+    <style name="t_3c785a" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#3c785a</item>
         <item name="colorPrimaryDark">#2a543f</item>
         <item name="colorAccent">#3c785a</item>
@@ -10276,7 +10276,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_3c8796" parent="@style/Theme.MGEProjekt">
+    <style name="t_3c8796" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#3c8796</item>
         <item name="colorPrimaryDark">#2a5f69</item>
         <item name="colorAccent">#3c8796</item>
@@ -10465,7 +10465,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_3ca50f" parent="@style/Theme.MGEProjekt">
+    <style name="t_3ca50f" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#3ca50f</item>
         <item name="colorPrimaryDark">#2a740b</item>
         <item name="colorAccent">#3ca50f</item>
@@ -12516,7 +12516,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_4b875a" parent="@style/Theme.MGEProjekt">
+    <style name="t_4b875a" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#4b875a</item>
         <item name="colorPrimaryDark">#355f3f</item>
         <item name="colorAccent">#4b875a</item>
@@ -14224,14 +14224,14 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_5a3cf0" parent="@style/Theme.MGEProjekt">
+    <style name="t_5a3cf0" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#5a3cf0</item>
         <item name="colorPrimaryDark">#3f2aa8</item>
         <item name="colorAccent">#5a3cf0</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_5a3cff" parent="@style/Theme.MGEProjekt">
+    <style name="t_5a3cff" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#5a3cff</item>
         <item name="colorPrimaryDark">#3f2ab2</item>
         <item name="colorAccent">#5a3cff</item>
@@ -15071,7 +15071,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_5aa5a5" parent="@style/Theme.MGEProjekt">
+    <style name="t_5aa5a5" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#5aa5a5</item>
         <item name="colorPrimaryDark">#3f7474</item>
         <item name="colorAccent">#5aa5a5</item>
@@ -18781,7 +18781,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_784b0f" parent="@style/Theme.MGEProjekt">
+    <style name="t_784b0f" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#784b0f</item>
         <item name="colorPrimaryDark">#54350b</item>
         <item name="colorAccent">#784b0f</item>
@@ -20020,7 +20020,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_78d2f0" parent="@style/Theme.MGEProjekt">
+    <style name="t_78d2f0" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#78d2f0</item>
         <item name="colorPrimaryDark">#5493a8</item>
         <item name="colorAccent">#78d2f0</item>
@@ -20258,7 +20258,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_78f0d2" parent="@style/Theme.MGEProjekt">
+    <style name="t_78f0d2" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#78f0d2</item>
         <item name="colorPrimaryDark">#54a893</item>
         <item name="colorAccent">#78f0d2</item>
@@ -20503,7 +20503,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_8700c3" parent="@style/Theme.MGEProjekt">
+    <style name="t_8700c3" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#8700c3</item>
         <item name="colorPrimaryDark">#5f0088</item>
         <item name="colorAccent">#8700c3</item>
@@ -21469,7 +21469,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_877869" parent="@style/Theme.MGEProjekt">
+    <style name="t_877869" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#877869</item>
         <item name="colorPrimaryDark">#5f544a</item>
         <item name="colorAccent">#877869</item>
@@ -22008,7 +22008,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_87b4b4" parent="@style/Theme.MGEProjekt">
+    <style name="t_87b4b4" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#87b4b4</item>
         <item name="colorPrimaryDark">#5f7e7e</item>
         <item name="colorAccent">#87b4b4</item>
@@ -22365,7 +22365,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_87e187" parent="@style/Theme.MGEProjekt">
+    <style name="t_87e187" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#87e187</item>
         <item name="colorPrimaryDark">#5f9d5f</item>
         <item name="colorAccent">#87e187</item>
@@ -22764,7 +22764,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_9600b4" parent="@style/Theme.MGEProjekt">
+    <style name="t_9600b4" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#9600b4</item>
         <item name="colorPrimaryDark">#69007e</item>
         <item name="colorAccent">#9600b4</item>
@@ -23065,7 +23065,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_962d0f" parent="@style/Theme.MGEProjekt">
+    <style name="t_962d0f" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#962d0f</item>
         <item name="colorPrimaryDark">#69200b</item>
         <item name="colorAccent">#962d0f</item>
@@ -25053,7 +25053,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_a500e1" parent="@style/Theme.MGEProjekt">
+    <style name="t_a500e1" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#a500e1</item>
         <item name="colorPrimaryDark">#74009d</item>
         <item name="colorAccent">#a500e1</item>
@@ -25494,7 +25494,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_a53c5a" parent="@style/Theme.MGEProjekt">
+    <style name="t_a53c5a" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#a53c5a</item>
         <item name="colorPrimaryDark">#742a3f</item>
         <item name="colorAccent">#a53c5a</item>
@@ -26565,7 +26565,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_a5b4e1" parent="@style/Theme.MGEProjekt">
+    <style name="t_a5b4e1" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#a5b4e1</item>
         <item name="colorPrimaryDark">#747e9d</item>
         <item name="colorAccent">#a5b4e1</item>
@@ -28189,7 +28189,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_b469c3" parent="@style/Theme.MGEProjekt">
+    <style name="t_b469c3" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#b469c3</item>
         <item name="colorPrimaryDark">#7e4a88</item>
         <item name="colorAccent">#b469c3</item>
@@ -28952,7 +28952,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_b4c3d2" parent="@style/Theme.MGEProjekt">
+    <style name="t_b4c3d2" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#b4c3d2</item>
         <item name="colorPrimaryDark">#7e8893</item>
         <item name="colorAccent">#b4c3d2</item>
@@ -32060,7 +32060,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_d21e78" parent="@style/Theme.MGEProjekt">
+    <style name="t_d21e78" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#d21e78</item>
         <item name="colorPrimaryDark">#931554</item>
         <item name="colorAccent">#d21e78</item>
@@ -33740,7 +33740,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_d2e1d2" parent="@style/Theme.MGEProjekt">
+    <style name="t_d2e1d2" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#d2e1d2</item>
         <item name="colorPrimaryDark">#939d93</item>
         <item name="colorAccent">#d2e1d2</item>
@@ -34062,7 +34062,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_e1005a" parent="@style/Theme.MGEProjekt">
+    <style name="t_e1005a" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#e1005a</item>
         <item name="colorPrimaryDark">#9d003f</item>
         <item name="colorAccent">#e1005a</item>
@@ -37219,7 +37219,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_f06969" parent="@style/Theme.MGEProjekt">
+    <style name="t_f06969" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#f06969</item>
         <item name="colorPrimaryDark">#a84a4a</item>
         <item name="colorAccent">#f06969</item>
@@ -37877,7 +37877,7 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 
-    <style name="t_f0b4a5" parent="@style/Theme.MGEProjekt">
+    <style name="t_f0b4a5" parent="@style/Theme.MGEProjekt" tools:ignore="UnusedResources">
         <item name="colorPrimary">#f0b4a5</item>
         <item name="colorPrimaryDark">#a87e74</item>
         <item name="colorAccent">#f0b4a5</item>

@@ -1,71 +1,45 @@
-package com.smajilbasic.kaesler.mgeprojekt;
+package com.smajilbasic.kaesler.mgeprojekt
 
-import static com.smajilbasic.kaesler.mgeprojekt.Helper.HISTORY_FILENAME;
-import static com.smajilbasic.kaesler.mgeprojekt.Helper.USER_PREFERENCES;
-import static com.smajilbasic.kaesler.mgeprojekt.Helper.getThemeId;
+import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
+import android.util.Log
+import android.view.MenuItem
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.fasterxml.jackson.databind.ObjectMapper
+import java.io.IOException
+import java.util.*
+import java.util.function.Consumer
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
-import android.util.JsonReader;
-import android.util.Log;
-import android.view.MenuItem;
-import android.widget.TextView;
+class HistoryActivity : AppCompatActivity() {
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-
-public class HistoryActivity extends AppCompatActivity {
-
-    TextView resultBox;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences sharedPref = getSharedPreferences(USER_PREFERENCES, MODE_PRIVATE);
-        setTheme(getThemeId(getApplication(), sharedPref));
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
-        resultBox = findViewById(R.id.result);
-        resultBox.setMovementMethod(new ScrollingMovementMethod());
-
-        ObjectMapper mapper = new ObjectMapper();
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        val sharedPref = getSharedPreferences(Helper.USER_PREFERENCES, MODE_PRIVATE)
+        setTheme(Helper.getThemeId(application, sharedPref))
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_history)
+        var resultBox: TextView = findViewById(R.id.result)
+        resultBox.movementMethod = ScrollingMovementMethod()
+        val mapper = ObjectMapper()
         try {
-
-            FileInputStream fileInputStream = openFileInput(HISTORY_FILENAME);
-
-            List<FileEntry> history = Arrays.asList(mapper.readValue(fileInputStream, FileEntry[].class));
-            fileInputStream.close();
-
-            history.forEach(entry -> resultBox.append(entry.toString()));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            deleteFile(HISTORY_FILENAME);
-            Log.d("MGE.APP", "Error " + e.getMessage());
+            val fileInputStream = openFileInput(Helper.HISTORY_FILENAME)
+            val history = listOf(*mapper.readValue(fileInputStream, Array<FileEntry>::class.java))
+            fileInputStream.close()
+            history.forEach(Consumer { entry: FileEntry -> resultBox.append(entry.toString()) })
+        } catch (e: IOException) {
+            e.printStackTrace()
+            deleteFile(Helper.HISTORY_FILENAME)
+            Log.d("MGE.APP", "Error " + e.message)
         }
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        val actionBar = supportActionBar
+        actionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            this.finish();
-            return true;
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item)
     }
 }
