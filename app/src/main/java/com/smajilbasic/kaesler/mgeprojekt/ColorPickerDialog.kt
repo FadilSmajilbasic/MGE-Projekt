@@ -40,7 +40,7 @@ class ColorPickerDialog : DialogFragment() {
                             blueSeekBar.progress * 15)
                     listener!!.onDialogPositiveClick(this@ColorPickerDialog, colorRead)
                 }
-                .setNegativeButton(R.string.color_pciker_dialog_cancel_de) { _: DialogInterface?, _: Int -> }
+                .setNegativeButton(R.string.color_picker_dialog_cancel_de) { _: DialogInterface?, _: Int -> }
         return builder.create()
     }
 

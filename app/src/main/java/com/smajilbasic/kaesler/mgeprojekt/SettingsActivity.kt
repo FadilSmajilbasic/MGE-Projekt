@@ -1,68 +1,32 @@
 package com.smajilbasic.kaesler.mgeprojekt
 
-import android.app.Application
-import com.smajilbasic.kaesler.mgeprojekt.FileEntry
-import com.fasterxml.jackson.databind.ObjectMapper
-import java.util.ArrayList
-import java.io.FileInputStream
-import java.util.Arrays
-import java.io.IOException
-import android.util.Log
-import java.io.FileOutputStream
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
+import android.graphics.Color
+import android.os.Bundle
+import android.os.Handler
+import android.view.MenuItem
+import android.view.View
+import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import android.view.View
-import android.os.Bundle
-import com.smajilbasic.kaesler.mgeprojekt.R
-import android.content.SharedPreferences.Editor
-import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.app.AppCompatDelegate
-import com.smajilbasic.kaesler.mgeprojekt.MainActivity
-import android.app.PendingIntent
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import android.os.Build
-import android.app.NotificationManager
-import android.app.NotificationChannel
-import com.smajilbasic.kaesler.mgeprojekt.AdditionActivity
-import com.smajilbasic.kaesler.mgeprojekt.DivisionActivity
-import com.smajilbasic.kaesler.mgeprojekt.MultiplicationActivity
-import com.smajilbasic.kaesler.mgeprojekt.SubtractionActivity
-import com.smajilbasic.kaesler.mgeprojekt.SettingsActivity
-import com.smajilbasic.kaesler.mgeprojekt.HistoryActivity
-import android.widget.TextView
-import android.text.method.ScrollingMovementMethod
-import android.view.MenuItem
-import android.widget.EditText
-import java.lang.StringBuilder
-import java.math.RoundingMode
-import android.widget.CompoundButton
-import com.smajilbasic.kaesler.mgeprojekt.ColorPickerDialog.ColorPickerDialogListener
 import androidx.appcompat.widget.SwitchCompat
-import com.smajilbasic.kaesler.mgeprojekt.ColorPickerDialog
-import android.graphics.Color
-import java.lang.Runnable
-import android.content.pm.PackageManager
-import android.app.Dialog
-import android.app.Activity
-import android.content.*
-import android.os.Handler
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.SeekBar
 import androidx.fragment.app.DialogFragment
-import java.lang.ClassCastException
+import com.smajilbasic.kaesler.mgeprojekt.ColorPickerDialog.ColorPickerDialogListener
 
 /**
  * Color change source: https://stackoverflow.com/a/48517223
  */
 class SettingsActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener, View.OnClickListener, ColorPickerDialogListener {
-    var sharedPref: SharedPreferences? = null
+    private var sharedPref: SharedPreferences? = null
     private var editor: Editor? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val sharedPref = getSharedPreferences(Helper.USER_PREFERENCES, MODE_PRIVATE)
-        this.sharedPref = sharedPref;
+        this.sharedPref = sharedPref
         setTheme(Helper.getThemeId(application, sharedPref))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)

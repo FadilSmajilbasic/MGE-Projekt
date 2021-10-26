@@ -18,7 +18,7 @@ class HistoryActivity : AppCompatActivity() {
         setTheme(Helper.getThemeId(application, sharedPref))
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
-        var resultBox: TextView = findViewById(R.id.result)
+        val resultBox: TextView = findViewById(R.id.result)
         resultBox.movementMethod = ScrollingMovementMethod()
         val mapper = ObjectMapper()
         try {

@@ -41,7 +41,7 @@
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/notification_switch"
-                android:text="Greeting notification"
+                android:text="@string/greeting_notification_de"
                 />
         </TableRow>
 

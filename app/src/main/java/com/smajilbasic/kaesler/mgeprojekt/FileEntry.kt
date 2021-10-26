@@ -1,10 +1,10 @@
 package com.smajilbasic.kaesler.mgeprojekt
 
 class FileEntry {
-    var firstNumber: String? = null
-    var secondNumber: String? = null
+    private var firstNumber: String? = null
+    private var secondNumber: String? = null
     var result: String? = null
-    var operator = 0.toChar()
+    private var operator = 0.toChar()
 
     constructor()
     constructor(firstNumber: String?, secondNumber: String?, result: String?, operator: Char) {

@@ -17,7 +17,7 @@
     <string name="settings_title_de">Impostazioni</string>
     <string name="dark_mode_switch_text">Modalità notturna</string>
     <string name="color_picker_button_text_de">Selezionare il colore</string>
-    <string name="color_pciker_dialog_cancel_de">Cancella</string>
+    <string name="color_picker_dialog_cancel_de">Cancella</string>
     <string name="color_picker_dialog_save_de">Salva</string>
     <string name="color_picker_dialog_title_de">Seleziona il colore dell\'interfaccia grafica</string>
     <string name="color_picker_dialog_seek_bar_red">Rosso</string>
@@ -27,4 +27,5 @@
     <string name="application_restart_toast">L\'applicazione verrä riavviata</string>
     <string name="Notification_title_de">Benvenuto</string>
     <string name="greeting_notification_text_de">Benvenuto nella applicazione calcolatrice. Oggi è il</string>
+    <string name="greeting_notification_de">Notifica di benvenuto</string>
 </resources>

@@ -22,9 +22,10 @@
     <string name="color_picker_dialog_seek_bar_red">Rot</string>
     <string name="color_picker_dialog_seek_bar_green">Grün</string>
     <string name="color_picker_dialog_seek_bar_blue">Blau</string>
-    <string name="color_pciker_dialog_cancel_de">Abbrechen</string>
+    <string name="color_picker_dialog_cancel_de">Abbrechen</string>
     <string name="color_picker_dialog_notice_text">Um die Farbe der Applikation erfolgleich zu ändern muss die Applikation neu gestartet werden</string>
     <string name="application_restart_toast">Die Applikation wird neu gestartet</string>
-    <string name="Notification_title_de">Herzlich Wilkommen</string>
+    <string name="Notification_title_de">Herzlich Willkommen</string>
     <string name="greeting_notification_text_de">Herzlich sie wieder zu sehen. Heute ist der</string>
+    <string name="greeting_notification_de">Willkommen Benachrichtigung</string>
 </resources>
