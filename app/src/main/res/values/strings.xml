@@ -23,11 +23,6 @@
     <string name="color_picker_dialog_seek_bar_green">Grün</string>
     <string name="color_picker_dialog_seek_bar_blue">Blau</string>
     <string name="color_picker_dialog_notice_text">Um die Farbe der Applikation erfolgleich zu ändern muss die Applikation neu gestartet werden</string>
-    <string-array name="languages_array">
-        <item>English</item>
-        <item>German</item>
-        <item>Italian</item>
-    </string-array>
     <string name="application_restart_toast">Die Applikation wird neu gestartet</string>
     <string name="channel_name" translatable="false">MGE_project_notification_channel</string>
     <string name="channel_description" translatable="false">Channel for the notifications of the MGE calculator app</string>
