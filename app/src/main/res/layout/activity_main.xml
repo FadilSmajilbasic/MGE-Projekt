@@ -24,46 +24,44 @@
 
         <TableRow android:gravity="center_horizontal">
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/plusButton"
                 android:layout_width="@dimen/main_activity_icon_size"
                 android:layout_height="@dimen/main_activity_icon_size"
-                android:background="@drawable/plus" />
+                />
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/minusButton"
                 android:layout_width="@dimen/main_activity_icon_size"
                 android:layout_height="@dimen/main_activity_icon_size"
-                android:background="@drawable/minus" />
+                 />
         </TableRow>
         <TableRow android:gravity="center_horizontal">
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/divideButton"
                 android:layout_width="@dimen/main_activity_icon_size"
-                android:layout_height="@dimen/main_activity_icon_size"
-                android:background="@drawable/divide" />
+                android:layout_height="@dimen/main_activity_icon_size"/>
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/multiplyButton"
                 android:layout_width="@dimen/main_activity_icon_size"
                 android:layout_height="@dimen/main_activity_icon_size"
-                android:background="@drawable/multiply" />
+                 />
         </TableRow>
 
         <TableRow android:gravity="center_horizontal">
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/settingsButton"
                 android:layout_width="@dimen/main_activity_icon_size"
                 android:layout_height="@dimen/main_activity_icon_size"
                 android:background="@drawable/ic_baseline_settings_24" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/historyButton"
                 android:layout_width="@dimen/main_activity_icon_size"
-                android:layout_height="@dimen/main_activity_icon_size"
-                android:background="@drawable/history" />
+                android:layout_height="@dimen/main_activity_icon_size"/>
 
         </TableRow>
     </TableLayout>
