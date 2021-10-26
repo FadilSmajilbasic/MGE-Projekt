@@ -17,7 +17,7 @@
     <string name="settings_title_de">Settings</string>
     <string name="dark_mode_switch_text">Dark mode</string>
     <string name="color_picker_button_text_de">Choose color</string>
-    <string name="color_pciker_dialog_cancel_de">Cancel</string>
+    <string name="color_picker_dialog_cancel_de">Cancel</string>
     <string name="color_picker_dialog_save_de">Save</string>
     <string name="color_picker_dialog_title_de">Choose UI color</string>
     <string name="color_picker_dialog_seek_bar_red">Red</string>
@@ -27,4 +27,5 @@
     <string name="application_restart_toast">The application is going to restart</string>
     <string name="Notification_title_de">Welcome</string>
     <string name="greeting_notification_text_de">"Welcome to the Calculator Application. Today is the "</string>
+    <string name="greeting_notification_de">Greeting notification</string>
 </resources>

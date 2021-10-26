@@ -16,7 +16,7 @@
     <string name="settings_title_de">Einstellungen</string>
     <string name="dark_mode_switch_text">Dark mode</string>
     <string name="color_picker_button_text_de">Farbe wählen</string>
-    <string name="color_pciker_dialog_cancel_de">Abbrechen</string>
+    <string name="color_picker_dialog_cancel_de">Abbrechen</string>
     <string name="color_picker_dialog_save_de">Speichern</string>
     <string name="color_picker_dialog_title_de">UI Farbe wählen</string>
     <string name="color_picker_dialog_seek_bar_red">Rot</string>
@@ -26,6 +26,7 @@
     <string name="application_restart_toast">Die Applikation wird neu gestartet</string>
     <string name="channel_name" translatable="false">MGE_project_notification_channel</string>
     <string name="channel_description" translatable="false">Channel for the notifications of the MGE calculator app</string>
-    <string name="Notification_title_de">Herzlich Wilkommen</string>
+    <string name="Notification_title_de">Herzlich Willkommen</string>
     <string name="greeting_notification_text_de">Herzlich sie wieder zu sehen. Heute ist der</string>
+    <string name="greeting_notification_de">Willkommen Benachrichtigung</string>
 </resources>

@@ -23,25 +23,31 @@ import java.util.*
   <p>
   All other icons:
   All emojis designed by OpenMoji (https://openmoji.org/) – the open-source emoji and icon project. License: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/#)
- */   class MainActivity : AppCompatActivity(), View.OnClickListener {
+ */
+
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         val sharedPref = getSharedPreferences(Helper.USER_PREFERENCES, MODE_PRIVATE)
         setTheme(Helper.getThemeId(application, sharedPref))
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         val editor = sharedPref.edit()
+
         val plusButton = findViewById<AppCompatButton>(R.id.plusButton)
         val minusButton = findViewById<AppCompatButton>(R.id.minusButton)
         val divideButton = findViewById<AppCompatButton>(R.id.divideButton)
         val multiplyButton = findViewById<AppCompatButton>(R.id.multiplyButton)
         val settingsButton = findViewById<AppCompatButton>(R.id.settingsButton)
         val historyButton = findViewById<AppCompatButton>(R.id.historyButton)
+
         plusButton.setOnClickListener(this)
         minusButton.setOnClickListener(this)
         divideButton.setOnClickListener(this)
         multiplyButton.setOnClickListener(this)
         settingsButton.setOnClickListener(this)
         historyButton.setOnClickListener(this)
+
         if (sharedPref.contains(Helper.DARK_MODE_KEY)) {
             if (sharedPref.getBoolean(Helper.DARK_MODE_KEY, false)) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -72,7 +78,7 @@ import java.util.*
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
         val date = Calendar.getInstance().time
-        val dateFormat: DateFormat = SimpleDateFormat("dd.MM.yyyy")
+        val dateFormat: DateFormat = SimpleDateFormat("dd.MM.yyyy", resources.configuration.locales.get(0))
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.calculator_icon)
                 .setContentTitle(getString(R.string.Notification_title_de))
@@ -86,15 +92,14 @@ import java.util.*
     }
 
     private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name: CharSequence = getString(R.string.channel_name)
-            val description = getString(R.string.channel_description)
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(CHANNEL_ID, name, importance)
-            channel.description = description
-            val notificationManager = getSystemService(NotificationManager::class.java)
-            notificationManager.createNotificationChannel(channel)
-        }
+        val name: CharSequence = getString(R.string.channel_name)
+        val description = getString(R.string.channel_description)
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel(CHANNEL_ID, name, importance)
+        channel.description = description
+        val notificationManager = getSystemService(NotificationManager::class.java)
+        notificationManager.createNotificationChannel(channel)
+
     }
 
     override fun onClick(view: View) {

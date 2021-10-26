@@ -26,7 +26,7 @@ object Helper {
             var historyList: ArrayList<FileEntry?>
             try {
                 val fileInputStream = context.openFileInput(HISTORY_FILENAME)
-                historyList = ArrayList(Arrays.asList(*mapper.readValue(fileInputStream, Array<FileEntry>::class.java)))
+                historyList = ArrayList(listOf(*mapper.readValue(fileInputStream, Array<FileEntry>::class.java)))
                 fileInputStream.close()
             } catch (e: IOException) {
                 Log.d("MGE.APP", "Error occurred while saving entry: " + e.message)

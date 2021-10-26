@@ -11,7 +11,7 @@ import java.math.RoundingMode
 import java.text.DecimalFormat
 
 class DivisionActivity : AppCompatActivity(), View.OnClickListener {
-    var resultBox: TextView? = null
+    private var resultBox: TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         val sharedPref = getSharedPreferences(Helper.USER_PREFERENCES, MODE_PRIVATE)
         setTheme(Helper.getThemeId(application, sharedPref))
@@ -35,8 +35,8 @@ class DivisionActivity : AppCompatActivity(), View.OnClickListener {
         if (view.id == R.id.calculateButton) {
             val firstInput = (findViewById<View>(R.id.firstNumber) as EditText).text.toString()
             val secondInput = (findViewById<View>(R.id.secondNumber) as EditText).text.toString()
-            if (!firstInput.isEmpty()) {
-                if (!secondInput.isEmpty()) {
+            if (firstInput.isNotEmpty()) {
+                if (secondInput.isNotEmpty()) {
                     val builder = StringBuilder()
                     val firstNumber = java.lang.Double.valueOf(firstInput)
                     val secondNumber = java.lang.Double.valueOf(secondInput)
