@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     multiplyButton.setImageResource(R.drawable.multiply);
                     historyButton.setImageResource(R.drawable.history);
                 }
-            } else {
+            } else if(sharedPref.getBoolean(DARK_MODE_KEY, true)){
                 if (AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     plusButton.setImageResource(R.drawable.plus_light);
