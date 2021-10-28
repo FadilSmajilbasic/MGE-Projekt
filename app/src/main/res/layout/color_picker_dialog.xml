@@ -76,6 +76,23 @@
             android:thumbTint="@color/blue"
             android:tooltipText="Blue color" />
     </TableRow>
+
+    <TableRow>
+        <TextView
+            android:textSize="@dimen/color_picker_dialog_colors_text_size"
+            android:text="@string/color_preview_de" />
+    </TableRow>
+    <TableRow android:gravity="center">
+        <LinearLayout
+            android:layout_margin="15dp"
+            android:id="@+id/color_preview_space"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:background="#ff456789">
+
+        </LinearLayout>
+    </TableRow>
     <TableRow android:layout_width="match_parent">
 
         <TextView
