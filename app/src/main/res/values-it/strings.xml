@@ -28,4 +28,5 @@
     <string name="Notification_title_de">Benvenuto</string>
     <string name="greeting_notification_text_de">Benvenuto nella applicazione calcolatrice. Oggi è il</string>
     <string name="greeting_notification_de">Notifica di benvenuto</string>
+    <string name="color_preview_de">Anteprima colore</string>
 </resources>

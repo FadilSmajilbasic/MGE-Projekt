@@ -28,4 +28,5 @@
     <string name="Notification_title_de">Herzlich Willkommen</string>
     <string name="greeting_notification_text_de">Herzlich sie wieder zu sehen. Heute ist der</string>
     <string name="greeting_notification_de">Willkommen Benachrichtigung</string>
+    <string name="color_preview_de">Farbe Vorschau</string>
 </resources>
